@@ -1,0 +1,5 @@
+<!--pages/new-detail/new-detail.wxml-->
+<view class="container">
+  <wemark md="{{article.content}}" link highlight type="wemark"></wemark>
+</view>
+

@@ -1,0 +1,4 @@
+/* pages/new-detail/new-detail.wxss */
+.container{
+	padding: 20rpx;
+}

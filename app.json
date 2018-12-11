@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/new/new",
+    "pages/music/music",
+    "pages/photo/photo",
+    "pages/more/more",
+    "pages/video/video",
+    "pages/new-detail/new-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#09BB07",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/new/new",
+        "text": "新闻",
+        "iconPath": "/images/tab/new.png",
+        "selectedIconPath": "/images/tab/new@selected.png"
+      },
+      {
+        "pagePath": "pages/music/music",
+        "text": "音乐",
+        "iconPath": "/images/tab/music.png",
+        "selectedIconPath": "/images/tab/music@selected.png"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "视频",
+        "iconPath": "/images/tab/video.png",
+        "selectedIconPath": "/images/tab/video@selected.png"
+      },
+      {
+        "pagePath": "pages/photo/photo",
+        "text": "图片",
+        "iconPath": "/images/tab/photo.png",
+        "selectedIconPath": "/images/tab/photo@selected.png"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "text": "更多",
+        "iconPath": "/images/tab/more.png",
+        "selectedIconPath": "/images/tab/more@selected.png"
+      }
+    ]
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "resizable": true
+}

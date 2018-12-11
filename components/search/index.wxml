@@ -1,0 +1,35 @@
+<!--components/search/index.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="search-container">
+      <image class="search-img" src="images/search.png" />
+      <input bindconfirm="onSearch" placeholder-class="in-bar" class="bar" value="{{inputValue}}" auto-focus="{{true}}" placeholder="{{placeholder}}" />
+      <image bindtap="onClear" class="cancel-img" src="images/cancel.png" />
+    </view>
+    <view bindtap="onCancel" class="cancel">取消</view>
+  </view>
+
+  <view wx:if="{{!searching}}">
+    <view class="history">
+      <view class="title">
+        <view class="chunk"></view>
+        <text>历史搜索</text>
+      </view>
+      <view class="tags">
+        <block wx:key="" wx:for="{{history_search}}">
+          <v-tag bindclick="onSearch" text="{{item}}" />
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="articles-container">
+    <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+      <v-article article="{{item}}" class="article" />
+    </block>
+  </view>
+
+  <v-loading class="loading-center" wx:if="{{loading_center}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到书籍</text>
+</view>

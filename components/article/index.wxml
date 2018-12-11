@@ -1,0 +1,8 @@
+<!--components/article/index.wxml-->
+<view bindtap="showArticleDetail" class="container">
+  <image src="{{article.cover_img}}" />
+  <view class="sub-container">
+    <text class="title">{{article.title}}</text>
+    <text class="summary">{{article.desc}}</text>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<!--pages/new/new.wxml-->
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索文章</text>
+    </view>
+  </view>
+  <view class="articles-container">
+    <block wx:key="id" wx:for="{{dataArray}}">
+      <v-article article="{{item}}" />
+    </block>
+  </view>
+  
+  <v-loading class="loading-center" wx:if="{{loading_center}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到书籍</text>
+</view>
+
+<v-search more="{{more}}" wx:else bindcancel="onCancelSearch" />

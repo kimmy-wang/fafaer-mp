@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-article": "/components/article/index",
+    "wemark": "/components/others/wemark/wemark"
+  }
+}
