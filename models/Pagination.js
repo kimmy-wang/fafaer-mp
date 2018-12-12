@@ -1,7 +1,7 @@
 class Pagination {
-  constructor(x, y) {
-    this.page = 1
-    this.size = 5
+  constructor(page = 1, size = 5) {
+    this.page = page
+    this.size = size
   }
 
   getNextPage() {

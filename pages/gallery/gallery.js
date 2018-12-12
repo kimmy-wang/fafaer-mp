@@ -1,7 +1,7 @@
-// pages/new/new.js
+// pages/gallery/gallery.js
 import {
-  getArticles
-} from '../../models/new.js'
+  getGallery
+} from '../../models/gallery.js'
 
 import {
   random
@@ -30,7 +30,7 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: 'news/articles/'
+    search_url: 'photos/gallery/'
   },
 
   /**
@@ -38,7 +38,8 @@ Page({
    */
   onLoad: function (options) {
     this._showLoadingCenter()
-    getArticles(1, pagination.getPageSize()).then(res => {
+    getGallery(1, pagination.getPageSize()).then(res => {
+      console.log(res)
       this._setMoreData(res.results)
       this._setTotal(res.count)
       this._hideLoadingCenter()
@@ -46,7 +47,7 @@ Page({
       this._hideLoadingCenter()
     })
   },
-  
+
   onSearching() {
     this.setData({
       searching: true
@@ -79,7 +80,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function (e) {
+  onReachBottom: function () {
     const more = random(16)
     this.setData({
       more
@@ -98,7 +99,7 @@ Page({
     }
 
     this._setLoading(true)
-    getArticles(pagination.getNextPage(), pagination.getPageSize()).then(res => {
+    getGallery(pagination.getNextPage(), pagination.getPageSize()).then(res => {
       // console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)

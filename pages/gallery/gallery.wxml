@@ -1,0 +1,27 @@
+<!--pages/gallery/gallery.wxml-->
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索相册</text>
+    </view>
+  </view>
+  <view class="gallery-container">
+    <block wx:key="id" wx:for="{{dataArray}}">
+      <v-gallery gallery="{{item}}" class="gallery" />
+    </block>
+  </view>
+  
+  <v-loading class="loading-center" wx:if="{{loading_center}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到图片</text>
+</view>
+
+<v-search wx:else more="{{more}}" search_url="{{search_url}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+  <view slot="datas" wx:if="{{search.searching}}" class="gallery-container">
+    <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
+      <v-gallery gallery="{{item}}" class="gallery" />
+    </block>
+  </view>
+</v-search>
+

@@ -14,9 +14,9 @@ const getArticleDetail = id => {
   })
 }
 
-const search = (q, page, size = 12) => {
+const search = (url, q, page = 1, size = 12) => {
   return http({
-    url: `news/articles/?search=${q}&page=${page}&size=${size}`
+    url: `${url}?search=${q}&page=${page}&size=${size}`
   })
 }
 

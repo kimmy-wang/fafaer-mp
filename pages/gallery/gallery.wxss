@@ -1,5 +1,4 @@
-/* pages/new/new.wxss */
-
+/* pages/gallery/gallery.wxss */
 .container {
   display: flex;
   flex-direction: column;
@@ -41,14 +40,14 @@
   margin-bottom: -2px;
 }
 
-.articles-container {
+.gallery-container {
   width: 100%;
+  margin-top: 100rpx;
   display: flex;
   flex-direction: column;
-  margin-top: 100rpx;
 }
 
-.articles-container .article {
+.gallery-container .gallery {
   margin: 10px;
 }
 

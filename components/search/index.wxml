@@ -23,13 +23,15 @@
     </view>
   </view>
 
-  <view wx:else class="articles-container">
+  <!-- <view wx:else class="articles-container">
     <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
       <v-article article="{{item}}" class="article" />
     </block>
-  </view>
+  </view> -->
+
+  <slot name="datas"></slot>
 
   <v-loading class="loading-center" wx:if="{{loading_center}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
-  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到书籍</text>
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索结果</text>
 </view>

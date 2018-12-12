@@ -2,10 +2,11 @@
   "pages": [
     "pages/new/new",
     "pages/music/music",
-    "pages/photo/photo",
     "pages/more/more",
     "pages/video/video",
-    "pages/new-detail/new-detail"
+    "pages/new-detail/new-detail",
+    "pages/gallery/gallery",
+    "pages/gallery-detail/gallery-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,8 +38,8 @@
         "selectedIconPath": "/images/tab/video@selected.png"
       },
       {
-        "pagePath": "pages/photo/photo",
-        "text": "图片",
+        "pagePath": "pages/gallery/gallery",
+        "text": "相册",
         "iconPath": "/images/tab/photo.png",
         "selectedIconPath": "/images/tab/photo@selected.png"
       },

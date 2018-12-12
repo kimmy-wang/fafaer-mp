@@ -8,13 +8,19 @@
   </view>
   <view class="articles-container">
     <block wx:key="id" wx:for="{{dataArray}}">
-      <v-article article="{{item}}" />
+      <v-article article="{{item}}" class="article" />
     </block>
   </view>
   
   <v-loading class="loading-center" wx:if="{{loading_center}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
-  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到书籍</text>
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到文章</text>
 </view>
 
-<v-search more="{{more}}" wx:else bindcancel="onCancelSearch" />
+<v-search wx:else more="{{more}}" search_url="{{search_url}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch" >
+  <view slot="datas" wx:if="{{search.searching}}" class="articles-container">
+    <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
+      <v-article article="{{item}}" class="article" />
+    </block>
+  </view>
+</v-search>

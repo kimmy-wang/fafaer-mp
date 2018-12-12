@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.4.1",
 	"appid": "wx5deb5d46eccbfff2",
-	"projectname": "陈一发儿个人主页",
+	"projectname": "%E9%99%88%E4%B8%80%E5%8F%91%E5%84%BF%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -29,13 +29,24 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "gallery",
+					"pathName": "pages/gallery/gallery",
+					"query": ""
+				}
+			]
 		}
 	}
 }

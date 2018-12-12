@@ -15,6 +15,10 @@ import {
 Component({
   behaviors: [paginationBeh],
 
+  options: {
+    multipleSlots: true // 在组件定义时的选项中启用多slot支持
+  },
+
   /**
    * 组件的属性列表
    */
@@ -26,7 +30,8 @@ Component({
     placeholder: {
       type: String,
       value: '请输入内容'
-    }
+    },
+    search_url: String
   },
 
   /**
@@ -65,9 +70,9 @@ Component({
       }
 
       this.setLoading(true)
-      search(text, this.getNextPage(), this.getPageSize()).then(res => {
-        // console.log(res)
+      search(this.properties.search_url, text, this.getNextPage(), this.getPageSize()).then(res => {
         this.setMoreData(res.results)
+        this._triggerMoreData(res.results)
         this.setLoading(false)
       }).catch(error => {
         this.setLoading(false)
@@ -85,9 +90,9 @@ Component({
         inputValue: text
       })
 
-      search(text, 1, this.getPageSize()).then(res => {
-        // console.log(res)
+      search(this.properties.search_url, text, 1, this.getPageSize()).then(res => {
         this.setMoreData(res.results)
+        this._triggerInitData(res.results)
         this.setTotal(res.count)
         this._hideLoadingCenter()
       }).catch(error => {
@@ -101,6 +106,7 @@ Component({
         searching: false,
         inputValue: ''
       })
+      this._triggerClearData()
     },
 
     onCancel() {
@@ -117,6 +123,18 @@ Component({
       this.setData({
         loading_center: false
       })
+    },
+
+    _triggerClearData() {
+      this.triggerEvent("clear", {}, {})
+    },
+
+    _triggerInitData(data) {
+      this.triggerEvent("init", { data, searching: true }, {})
+    },
+
+    _triggerMoreData(data) {
+      this.triggerEvent("update", { data, searching: true }, {})
     }
   }
 })

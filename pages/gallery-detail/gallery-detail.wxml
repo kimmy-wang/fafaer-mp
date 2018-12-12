@@ -1,0 +1,23 @@
+<!--pages/photo/photo.wxml-->
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索图片</text>
+    </view>
+  </view>
+  <view class="photos-container">
+    <!-- <block wx:key="id" wx:for="{{dataArray}}"> -->
+      <v-photo />
+      <v-photo />
+      <v-photo />
+      <v-photo />
+    <!-- </block> -->
+  </view>
+  
+  <v-loading class="loading-center" wx:if="{{loading_center}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到图片</text>
+</view>
+
+<v-search more="{{more}}" wx:else bindcancel="onCancelSearch" />

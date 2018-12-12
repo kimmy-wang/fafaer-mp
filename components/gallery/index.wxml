@@ -1,0 +1,12 @@
+<!--components/gallery/index.wxml-->
+<view bindtap="showGalleryDetail" class="container">
+  <image src="images/cover_img.png" />
+  <view class="sub-container">
+    <text class="title">{{gallery.name}}</text>
+    <text class="content">{{gallery.desc}}</text>
+    <view class="tip-container">
+      <text class="date">时间: {{gallery.date}}</text>
+      <text class="count">数量: {{gallery.count}}</text>
+    </view>
+  </view>
+</view>

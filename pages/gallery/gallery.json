@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "相册",
+  "usingComponents": {
+    "v-search": "/components/search/index",
+    "v-gallery": "/components/gallery/index",
+    "v-loading": "/components/loading/index"
+  }
+}
