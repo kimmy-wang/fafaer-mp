@@ -6,7 +6,7 @@ import {
 
 import {
   search
-} from "../../models/new.js"
+} from "../../models/search.js"
 
 import {
   paginationBeh

@@ -4,7 +4,8 @@ import {
 } from '../../models/new.js'
 
 import {
-  random
+  random,
+  handleError
 } from '../../utils/common.js'
 
 import {
@@ -30,7 +31,7 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: 'news/articles/'
+    search_url: 'news/articles?'
   },
 
   /**
@@ -44,6 +45,7 @@ Page({
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
+      handleError()
     })
   },
   
@@ -104,6 +106,7 @@ Page({
       this._setLoading(false)
     }).catch(error => {
       this._setLoading(false)
+      handleError()
     })
   },
 

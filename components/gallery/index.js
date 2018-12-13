@@ -19,9 +19,9 @@ Component({
    */
   methods: {
     showGalleryDetail() {
-      const { id } = this.data.gallery
+      const { id, name } = this.data.gallery
       wx.navigateTo({
-        url: `/pages/gallery-detail/gallery-detail?gallery_id=${id}`
+        url: `/pages/gallery-detail/gallery-detail?id=${id}&name=${name}`
       })
     }
   }

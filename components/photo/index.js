@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    photo: Object
   },
 
   /**
@@ -18,6 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    previewImage() {
+      const img = this.properties.photo.file
+      wx.previewImage({
+        urls: [img]
+      })
+    }
   }
 })

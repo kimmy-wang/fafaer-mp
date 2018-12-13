@@ -9,6 +9,14 @@ const random = n => {
   return res;
 }
 
+const handleError = () => {
+  wx.showToast({
+    title: '网络错误',
+    icon: 'none'
+  })
+}
+
 export {
-  random
+  random,
+  handleError
 }

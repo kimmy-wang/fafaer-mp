@@ -14,14 +14,7 @@ const getArticleDetail = id => {
   })
 }
 
-const search = (url, q, page = 1, size = 12) => {
-  return http({
-    url: `${url}?search=${q}&page=${page}&size=${size}`
-  })
-}
-
 export {
   getArticles,
-  getArticleDetail,
-  search
+  getArticleDetail
 }

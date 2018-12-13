@@ -7,17 +7,20 @@
     </view>
   </view>
   <view class="photos-container">
-    <!-- <block wx:key="id" wx:for="{{dataArray}}"> -->
-      <v-photo />
-      <v-photo />
-      <v-photo />
-      <v-photo />
-    <!-- </block> -->
+    <block wx:key="{{item.photo.id}}" wx:for="{{dataArray}}">
+      <v-photo photo="{{item.photo}}" class="photo" />
+    </block>
   </view>
-  
+
   <v-loading class="loading-center" wx:if="{{loading_center}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到图片</text>
 </view>
 
-<v-search more="{{more}}" wx:else bindcancel="onCancelSearch" />
+<v-search more="{{more}}" search_url="{{search_url}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+  <view slot="datas" wx:if="{{search.searching}}" class="photos-container">
+    <block wx:key="{{item.photo.id}}" wx:for="{{search.searchDataArray}}">
+      <v-photo photo="{{item.photo}}" class="photo" />
+    </block>
+  </view>
+</v-search>

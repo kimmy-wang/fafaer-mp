@@ -4,7 +4,8 @@ import {
 } from '../../models/gallery.js'
 
 import {
-  random
+  random,
+  handleError
 } from '../../utils/common.js'
 
 import {
@@ -30,7 +31,7 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: 'photos/gallery/'
+    search_url: 'photos/gallery?'
   },
 
   /**
@@ -39,12 +40,13 @@ Page({
   onLoad: function (options) {
     this._showLoadingCenter()
     getGallery(1, pagination.getPageSize()).then(res => {
-      console.log(res)
+      // console.log(res)
       this._setMoreData(res.results)
       this._setTotal(res.count)
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
+      handleError()
     })
   },
 
@@ -105,6 +107,7 @@ Page({
       this._setLoading(false)
     }).catch(error => {
       this._setLoading(false)
+      handleError()
     })
   },
 

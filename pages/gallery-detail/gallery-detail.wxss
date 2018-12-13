@@ -41,15 +41,17 @@
   margin-bottom: -2px;
 }
 
-.container .photos-container {
-  width: 100%;
+.photos-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 100rpx;
+  padding: 10rpx 90rpx;
 }
 
-.photos-container v-article {
-  margin: 10px;
+.photos .photo {
+  margin-bottom: 10px;
 }
 
 .loading-center {

@@ -8,9 +8,9 @@ const getGallery = (page = 1, size = 12) => {
   })
 }
 
-const getGalleryDetail = id => {
+const getGalleryDetail = (id, page = 1, size = 12) => {
   return http({
-    url: `photos/gallery/${id}`
+    url: `photos/detail/?gallery_id=${id}&page=${page}&size=${size}`
   })
 }
 

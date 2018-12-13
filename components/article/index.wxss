@@ -13,12 +13,12 @@
 
 .container image {
   width: 100%;
-  height: 200px;
+  height: 400rpx;
 }
 
 .container .sub-container {
   width: 100%;
-  height: 100px;
+  height: 200rpx;
   position: absolute;
   bottom: 0;
   background: white;
@@ -36,8 +36,8 @@
 }
 
 .container .sub-container .title {
-  margin: 0 5px;
-  font-size: 20px;
+  margin: 0 10rpx;
+  font-size: 40rpx;
   font-weight: bold;
   color: #555;
   overflow: hidden;
@@ -46,11 +46,11 @@
 }
 
 .container .sub-container .summary {
-  height: 64px;
-  margin: 5px;
-  font-size: 14px;
-  line-height: 16px;
-  text-indent: 25px;
+  height: 128rpx;
+  margin: 10rpx;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  text-indent: 50rpx;
   color: #666;
   display: -webkit-box;
   -webkit-line-clamp: 4;
