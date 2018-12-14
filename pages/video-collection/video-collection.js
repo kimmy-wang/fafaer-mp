@@ -1,7 +1,7 @@
-// pages/photo/photo.js
+// pages/video-collection/video-collection.js
 import {
-  getGalleryDetail
-} from '../../models/gallery.js'
+  getVideoCollection
+} from '../../models/video-collection.js'
 
 import {
   random,
@@ -13,7 +13,6 @@ import {
 } from '../../models/Pagination.js'
 
 const pagination = new Pagination()
-pagination.setPageSize(6)
 
 Page({
 
@@ -32,26 +31,16 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: '',
-    gallery_id: ''
+    search_url: 'videos/collection?'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { id, name } = options
-    this.setData({
-      search_url: `photos/detail?gallery_id=${id}&`,
-      gallery_id: id
-    })
     this._showLoadingCenter()
-    getGalleryDetail(id, pagination.getFirstPage(), pagination.getPageSize()).then(res => {
+    getVideoCollection(pagination.getFirstPage(), pagination.getPageSize()).then(res => {
       console.log(res)
-      wx.setNavigationBarTitle({
-        title: name
-      })
-
       this._setMoreData(res.results)
       this._setTotal(res.count)
       this._hideLoadingCenter()
@@ -82,7 +71,6 @@ Page({
       }
     })
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -112,7 +100,7 @@ Page({
     }
 
     this._setLoading(true)
-    getGalleryDetail(this.data.gallery_id, pagination.getNextPage(), pagination.getPageSize()).then(res => {
+    getVideoCollection(pagination.getNextPage(), pagination.getPageSize()).then(res => {
       // console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)
@@ -139,7 +127,6 @@ Page({
 
   _loadSearchData(e) {
     const { data, searching } = e.detail
-    console.log(data)
     const searchDataArray = this.data.search.searchDataArray.concat(data)
     this.setData({
       search: {

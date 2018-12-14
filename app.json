@@ -1,12 +1,14 @@
 {
   "pages": [
     "pages/new/new",
-    "pages/music/music",
-    "pages/more/more",
-    "pages/video/video",
     "pages/new-detail/new-detail",
+    "pages/music/music",
+    "pages/video-collection/video-collection",
+    "pages/video/video",
     "pages/gallery/gallery",
-    "pages/gallery-detail/gallery-detail"
+    "pages/gallery-detail/gallery-detail",
+    "pages/more/more",
+    "pages/video-collection-detail/video-collection-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -32,8 +34,8 @@
         "selectedIconPath": "/images/tab/music@selected.png"
       },
       {
-        "pagePath": "pages/video/video",
-        "text": "视频",
+        "pagePath": "pages/video-collection/video-collection",
+        "text": "视频集",
         "iconPath": "/images/tab/video.png",
         "selectedIconPath": "/images/tab/video@selected.png"
       },

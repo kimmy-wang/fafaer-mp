@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "视频集",
+  "usingComponents": {
+    "v-search": "/components/search/index",
+    "v-video-collection": "/components/video-collection/index",
+    "v-loading": "/components/loading/index"
+  }
+}

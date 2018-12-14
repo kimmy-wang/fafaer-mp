@@ -31,7 +31,11 @@ Component({
       type: String,
       value: '请输入内容'
     },
-    search_url: String
+    searchUrl: String,
+    historySearchType: {
+      type: Number,
+      value: -1
+    }
   },
 
   /**
@@ -41,11 +45,12 @@ Component({
     history_search: [],
     searching: false,
     inputValue: '',
-    loading_center: false
+    loading_center: false,
+    
   },
 
   attached() {
-    const history_search = getHistorySearch()
+    const history_search = getHistorySearch(this.properties.historySearchType)
     this.setData({
       history_search
     })
@@ -70,7 +75,7 @@ Component({
       }
 
       this.setLoading(true)
-      search(this.properties.search_url, text, this.getNextPage(), this.getPageSize()).then(res => {
+      search(this.properties.searchUrl, text, this.getNextPage(), this.getPageSize()).then(res => {
         this.setMoreData(res.results)
         this._triggerMoreData(res.results)
         this.setLoading(false)
@@ -82,15 +87,15 @@ Component({
     onSearch(e) {
       this._showLoadingCenter()
       const text = e.detail.value || e.detail.text
-      addHistorySearch(text)
-      const history_search = getHistorySearch()
+      addHistorySearch(this.properties.historySearchType, text)
+      const history_search = getHistorySearch(this.properties.historySearchType)
       this.setData({
         history_search,
         searching: true,
         inputValue: text
       })
 
-      search(this.properties.search_url, text, 1, this.getPageSize()).then(res => {
+      search(this.properties.searchUrl, text, 1, this.getPageSize()).then(res => {
         this.setMoreData(res.results)
         this._triggerInitData(res.results)
         this.setTotal(res.count)

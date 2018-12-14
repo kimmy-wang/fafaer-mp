@@ -17,7 +17,7 @@
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到图片</text>
 </view>
 
-<v-search more="{{more}}" search_url="{{search_url}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+<v-search more="{{more}}" history-search-type="{{401}}" search-url="{{search_url}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="photos-container">
     <block wx:key="{{item.photo.id}}" wx:for="{{search.searchDataArray}}">
       <v-photo photo="{{item.photo}}" class="photo" />

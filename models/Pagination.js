@@ -4,6 +4,10 @@ class Pagination {
     this.size = size
   }
 
+  getFirstPage() {
+    return this.page
+  }
+
   getNextPage() {
     const page = this.page + 1
     this.page = page
@@ -12,6 +16,10 @@ class Pagination {
 
   getPageSize() {
     return this.size
+  }
+
+  setPageSize(size) {
+    this.size = size
   }
 }
 

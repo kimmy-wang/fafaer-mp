@@ -42,8 +42,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "gallery",
-					"pathName": "pages/gallery/gallery",
+					"name": "video-collection",
+					"pathName": "pages/video-collection/video-collection",
 					"query": ""
 				}
 			]

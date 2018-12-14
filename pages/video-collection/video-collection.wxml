@@ -1,0 +1,26 @@
+<!--pages/video-collection/video-collection.wxml-->
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索视频集</text>
+    </view>
+  </view>
+  <view class="video-collections-container">
+    <block wx:key="{{item.id}}" wx:for="{{dataArray}}">
+      <v-video-collection video-collection="{{item}}" class="video-collection" />
+    </block>
+  </view>
+  
+  <v-loading class="loading-center" wx:if="{{loading_center}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到视频集</text>
+</view>
+
+<v-search wx:else more="{{more}}" history-search-type="{{300}}" search-url="{{search_url}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+  <view slot="datas" wx:if="{{search.searching}}" class="video-collections-container">
+    <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
+      <v-video-collection video-collection="{{item}}" class="video-collection" />
+    </block>
+  </view>
+</v-search>

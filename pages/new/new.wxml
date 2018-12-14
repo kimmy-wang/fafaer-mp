@@ -17,7 +17,7 @@
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到文章</text>
 </view>
 
-<v-search wx:else more="{{more}}" search_url="{{search_url}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch" >
+<v-search wx:else more="{{more}}" history-search-type="{{100}}" search-url="{{search_url}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch" >
   <view slot="datas" wx:if="{{search.searching}}" class="articles-container">
     <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
       <v-article article="{{item}}" class="article" />
