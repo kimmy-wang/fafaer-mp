@@ -12,6 +12,10 @@ import {
   Pagination
 } from '../../models/Pagination.js'
 
+import {
+  HISTORY_SEARCH_GALLERY_PHOTO
+} from '../../utils/constants.js'
+
 const pagination = new Pagination()
 pagination.setPageSize(6)
 
@@ -33,7 +37,8 @@ Page({
     loading: false,
     loading_center: false,
     search_url: '',
-    gallery_id: ''
+    gallery_id: '',
+    historySearchType: HISTORY_SEARCH_GALLERY_PHOTO
   },
 
   /**

@@ -12,6 +12,10 @@ import {
   Pagination
 } from '../../models/Pagination.js'
 
+import {
+  HISTORY_SEARCH_ARTICLE
+} from '../../utils/constants.js'
+
 const pagination = new Pagination()
 
 Page({
@@ -31,7 +35,8 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: 'news/articles?'
+    search_url: 'news/articles?',
+    historySearchType: HISTORY_SEARCH_ARTICLE
   },
 
   /**

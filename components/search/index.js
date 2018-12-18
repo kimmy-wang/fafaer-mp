@@ -12,6 +12,10 @@ import {
   paginationBeh
 } from '../behaviors/pagination.js'
 
+import {
+  HISTORY_SEARCH
+} from '../../utils/constants.js'
+
 Component({
   behaviors: [paginationBeh],
 
@@ -33,8 +37,8 @@ Component({
     },
     searchUrl: String,
     historySearchType: {
-      type: Number,
-      value: -1
+      type: String,
+      value: HISTORY_SEARCH
     }
   },
 

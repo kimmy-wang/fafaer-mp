@@ -12,6 +12,10 @@ import {
   Pagination
 } from '../../models/Pagination.js'
 
+import {
+  HISTORY_SEARCH_GALLERY
+} from '../../utils/constants.js'
+
 const pagination = new Pagination()
 
 Page({
@@ -24,6 +28,7 @@ Page({
       searchDataArray: [],
       searching: false
     },
+
     dataArray: [],
     searching: false,
     more: '',
@@ -31,7 +36,9 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: 'photos/gallery?'
+
+    search_url: 'photos/gallery?',
+    historySearchType: HISTORY_SEARCH_GALLERY
   },
 
   /**

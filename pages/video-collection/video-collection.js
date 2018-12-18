@@ -12,6 +12,10 @@ import {
   Pagination
 } from '../../models/Pagination.js'
 
+import {
+  HISTORY_SEARCH_VIDEO_COLLECTION
+} from "../../utils/constants.js";
+
 const pagination = new Pagination()
 
 Page({
@@ -31,7 +35,8 @@ Page({
     noneResult: false,
     loading: false,
     loading_center: false,
-    search_url: 'videos/collection?'
+    search_url: 'videos/collection?',
+    historySearchType: HISTORY_SEARCH_VIDEO_COLLECTION
   },
 
   /**

@@ -4,11 +4,10 @@
     "pages/new-detail/new-detail",
     "pages/music/music",
     "pages/video-collection/video-collection",
-    "pages/video/video",
+    "pages/video-collection-detail/video-collection-detail",
     "pages/gallery/gallery",
     "pages/gallery-detail/gallery-detail",
-    "pages/more/more",
-    "pages/video-collection-detail/video-collection-detail"
+    "pages/more/more"
   ],
   "window": {
     "backgroundTextStyle": "light",

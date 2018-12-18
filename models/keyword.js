@@ -1,17 +1,11 @@
-const HISTORY_SEARCH = "HISTORY_SEARCH"
+import {
+  HISTORY_SEARCH
+} from '../utils/constants.js'
+
 const MAX_LENGTH = 10
 
-const types = {
-  100: 'HISTORY_SEARCH_ARTICLE',
-  200: 'HISTORY_SEARCH_MUSIC',
-  300: 'HISTORY_SEARCH_VIDEO_COLLECTION',
-  301: 'HISTORY_SEARCH_VIDEO_COLLECTION_VIDEO',
-  400: 'HISTORY_SEARCH_GALLERY',
-  401: 'HISTORY_SEARCH_GALLERY_PHOTO',
-}
-
 const getHistorySearch = (type) => {
-  const key = types[type] || HISTORY_SEARCH
+  const key = type || HISTORY_SEARCH
   return wx.getStorageSync(key) || []
 }
 
@@ -29,7 +23,7 @@ const addHistorySearch = (type, text) => {
     historySearch.splice((historySearch.length - 1), 1)
   }
 
-  const key = types[type] || HISTORY_SEARCH
+  const key = type || HISTORY_SEARCH
   wx.setStorageSync(key, historySearch)
 }
 
