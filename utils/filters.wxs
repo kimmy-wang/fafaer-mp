@@ -1,0 +1,9 @@
+
+var splice = function (str) {
+  if (!str) return
+  return str.substring(0, str.indexOf('?'))
+}
+
+module.exports = {
+  splice: splice,
+}

@@ -47,7 +47,7 @@ Page({
     })
     this._showLoadingCenter()
     getGalleryDetail(id, pagination.getFirstPage(), pagination.getPageSize()).then(res => {
-      console.log(res)
+      // console.log(res)
       wx.setNavigationBarTitle({
         title: name
       })

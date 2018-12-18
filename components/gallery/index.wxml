@@ -1,6 +1,6 @@
 <!--components/gallery/index.wxml-->
 <view bindtap="showGalleryDetail" class="container">
-  <image src="images/cover_img.png" />
+  <image lazy-load="{{true}}" src="images/cover_img.png" />
   <view class="sub-container">
     <text class="title">{{gallery.name}}</text>
     <text class="content">{{gallery.desc}}</text>

@@ -47,10 +47,10 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 100rpx;
-  padding: 10rpx 90rpx;
+  padding: 10rpx 60rpx;
 }
 
-.photos .photo {
+.photos-container .photo {
   margin-bottom: 10px;
 }
 

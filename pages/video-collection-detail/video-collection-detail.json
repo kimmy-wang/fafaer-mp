@@ -1,1 +1,8 @@
-{}
+{
+  "navigationBarTitleText": "视频",
+  "usingComponents": {
+    "v-search": "/components/search/index",
+    "v-video": "/components/video/index",
+    "v-loading": "/components/loading/index"
+  }
+}

@@ -40,7 +40,7 @@ Page({
   onLoad: function (options) {
     this._showLoadingCenter()
     getVideoCollection(pagination.getFirstPage(), pagination.getPageSize()).then(res => {
-      console.log(res)
+      // console.log(res)
       this._setMoreData(res.results)
       this._setTotal(res.count)
       this._hideLoadingCenter()
@@ -71,6 +71,7 @@ Page({
       }
     })
   },
+  
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

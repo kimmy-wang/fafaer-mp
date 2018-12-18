@@ -1,2 +1,10 @@
 <!--components/video/index.wxml-->
-<text>components/video/index.wxml</text>
+<wxs src="../../utils/filters.wxs" module="utils" />
+
+<view class="container">
+  <video bindplay="onPlay" bindpause="onPause" bindtimeupdate="onPlaying" bindended="onEnded" binderror="onError" id="video" src="{{utils.splice(video.file)}}" />
+  <view class="sub-container">
+    <text class="title">{{video.name}}</text>
+    <text class="summary">{{video.desc}}</text>
+  </view>
+</view>

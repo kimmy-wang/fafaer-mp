@@ -30,6 +30,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    videoContext: null,
+    videoPlaying: false,
+    videoId: ''
   }
 })

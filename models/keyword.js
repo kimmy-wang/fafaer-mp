@@ -1,4 +1,4 @@
-const HISTORY_SEARCH_KEY = "HISTORY_SEARCH"
+const HISTORY_SEARCH = "HISTORY_SEARCH"
 const MAX_LENGTH = 10
 
 const types = {
@@ -11,7 +11,7 @@ const types = {
 }
 
 const getHistorySearch = (type) => {
-  const key = types[type] || HISTORY_SEARCH_KEY
+  const key = types[type] || HISTORY_SEARCH
   return wx.getStorageSync(key) || []
 }
 
@@ -25,11 +25,11 @@ const addHistorySearch = (type, text) => {
   index > 0 && historySearch.splice(index, 1)
 
   historySearch.unshift(text)
-  if (historySearch.length > MAX_LENGTH) {
+  while (historySearch.length > MAX_LENGTH) {
     historySearch.splice((historySearch.length - 1), 1)
   }
 
-  const key = types[type] || HISTORY_SEARCH_KEY
+  const key = types[type] || HISTORY_SEARCH
   wx.setStorageSync(key, historySearch)
 }
 
