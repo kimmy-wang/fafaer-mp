@@ -1,8 +1,8 @@
 {
-  "navigationBarTitleText": "音乐",
+  "navigationBarTitleText": "歌曲",
   "usingComponents": {
     "v-search": "/components/search/index",
-    "v-album": "/components/album/index",
+    "v-song": "/components/song/index",
     "v-loading": "/components/loading/index"
   }
 }

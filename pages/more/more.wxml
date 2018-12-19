@@ -1,2 +1,15 @@
 <!--pages/more/more.wxml-->
-<text>pages/more/more.wxml</text>
+<view class="container">
+  <block wx:for="{{settings}}" wx:key="*this" wx:for-item="parent">
+    <view class="sub-sontainer">
+      <block wx:for="{{parent}}" wx:key="{{item.id}}">
+        <v-more class="more">
+          <view slot="content" class="content-container">
+            <image src="{{item.icon}}" />
+            <text>{{item.title}}</text>
+          </view>
+        </v-more>
+      </block>
+    </view>
+  </block>
+</view>

@@ -34,8 +34,8 @@ Page({
     total: 0,
     noneResult: false,
     loading: false,
-    loading_center: false,
-    search_url: 'news/articles?',
+    loadingCenter: false,
+    searchUrl: 'news/articles?',
     historySearchType: HISTORY_SEARCH_ARTICLE
   },
 
@@ -171,13 +171,13 @@ Page({
 
   _showLoadingCenter() {
     this.setData({
-      loading_center: true
+      loadingCenter: true
     })
   },
 
   _hideLoadingCenter() {
     this.setData({
-      loading_center: false
+      loadingCenter: false
     })
   }
 })

@@ -1,0 +1,24 @@
+/* components/more/index.wxss */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+}
+
+/* .sub-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sub-container image {
+  width: 50rpx;
+  height: 50rpx;
+} */
+
+.container > image {
+  width: 50rpx;
+  height: 50rpx;
+}

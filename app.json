@@ -3,6 +3,7 @@
     "pages/new/new",
     "pages/new-detail/new-detail",
     "pages/music/music",
+    "pages/music-detail/music-detail",
     "pages/video-collection/video-collection",
     "pages/video-collection-detail/video-collection-detail",
     "pages/gallery/gallery",

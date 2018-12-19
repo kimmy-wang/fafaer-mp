@@ -12,12 +12,12 @@
     </block>
   </view>
 
-  <v-loading class="loading-center" wx:if="{{loading_center}}" />
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到图片</text>
 </view>
 
-<v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{search_url}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+<v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="photos-container">
     <block wx:key="{{item.photo.id}}" wx:for="{{search.searchDataArray}}">
       <v-photo photo="{{item.photo}}" class="photo" />

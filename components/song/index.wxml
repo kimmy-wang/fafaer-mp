@@ -1,0 +1,10 @@
+<!--components/song/index.wxml-->
+<view class="container">
+  <view class="left">
+    <text class="title">{{song.name}}</text>
+    <text class="name">{{song.singer.nickname}}</text>
+  </view>
+  <view class="right">
+    <image src="images/more.png" />
+  </view>
+</view>

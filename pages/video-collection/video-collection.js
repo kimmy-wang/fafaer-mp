@@ -34,8 +34,8 @@ Page({
     total: 0,
     noneResult: false,
     loading: false,
-    loading_center: false,
-    search_url: 'videos/collection?',
+    loadingCenter: false,
+    searchUrl: 'videos/collection?',
     historySearchType: HISTORY_SEARCH_VIDEO_COLLECTION
   },
 
@@ -172,13 +172,13 @@ Page({
 
   _showLoadingCenter() {
     this.setData({
-      loading_center: true
+      loadingCenter: true
     })
   },
 
   _hideLoadingCenter() {
     this.setData({
-      loading_center: false
+      loadingCenter: false
     })
   }
 })

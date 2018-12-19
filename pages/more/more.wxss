@@ -1,1 +1,42 @@
 /* pages/more/more.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+}
+
+.sub-sontainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 20rpx 0;
+  padding: 0 10rpx;
+}
+
+.sub-sontainer > .more {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sub-sontainer > .more:last-child {
+  border-bottom: none;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content-container > image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+
+.content-container > text {
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-left: 30rpx;
+  color: #555;
+}

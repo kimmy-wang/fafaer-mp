@@ -38,12 +38,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
-					"name": "video-collection",
-					"pathName": "pages/video-collection/video-collection",
+					"name": "music",
+					"pathName": "pages/music/music",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "more",
+					"pathName": "pages/more/more",
 					"query": ""
 				}
 			]

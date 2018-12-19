@@ -1,0 +1,41 @@
+<!--pages/music-detail/music-detail.wxml-->
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索音乐</text>
+    </view>
+  </view>
+  <view class="songs-wrapper margin-top">
+    <view class="album-container">
+      <view class="img-container">
+        <image src="{{album.background_img}}" />
+      </view>
+      <view class="content-container">
+        <image src="{{album.cover_img}}" />
+        <view class="container-wrapper">
+          <text class="company">歌手 {{album.release_company}}</text>
+          <text class="date">发行时间 {{album.release_date}}</text>
+          <text class="count">数量 {{album.count}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="songs-container">
+      <block wx:key="{{item.song.id}}" wx:for="{{dataArray}}">
+        <v-song song="{{item.song}}" class="song" />
+      </block>
+    </view>
+  </view>
+
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到音乐</text>
+</view>
+
+<v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+  <view slot="datas" wx:if="{{search.searching}}" class="songs-container margin-top">
+    <block wx:key="{{item.song.id}}" wx:for="{{search.searchDataArray}}">
+      <v-song song="{{item.song}}" class="song" />
+    </block>
+  </view>
+</v-search>

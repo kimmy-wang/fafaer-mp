@@ -1,0 +1,12 @@
+<!--components/album/index.wxml-->
+<view bindtap="showAlbumDetail" class="container">
+  <image lazy-load="{{true}}" src="images/cover_img.png" />
+  <view class="sub-container">
+    <text class="title">{{album.name}}</text>
+    <text class="content">{{album.desc}}</text>
+    <view class="tip-container">
+      <text class="date">时间: {{album.release_date}}</text>
+      <text class="count">数量: {{album.count}}</text>
+    </view>
+  </view>
+</view>

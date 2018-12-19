@@ -35,9 +35,9 @@ Page({
     total: 0,
     noneResult: false,
     loading: false,
-    loading_center: false,
-    search_url: '',
-    gallery_id: '',
+    loadingCenter: false,
+    searchUrl: '',
+    galleryId: '',
     historySearchType: HISTORY_SEARCH_GALLERY_PHOTO
   },
 
@@ -47,8 +47,8 @@ Page({
   onLoad: function (options) {
     const { id, name } = options
     this.setData({
-      search_url: `photos/detail?gallery_id=${id}&`,
-      gallery_id: id
+      searchUrl: `photos/detail?gallery_id=${id}&`,
+      galleryId: id
     })
     this._showLoadingCenter()
     getGalleryDetail(id, pagination.getFirstPage(), pagination.getPageSize()).then(res => {
@@ -117,7 +117,7 @@ Page({
     }
 
     this._setLoading(true)
-    getGalleryDetail(this.data.gallery_id, pagination.getNextPage(), pagination.getPageSize()).then(res => {
+    getGalleryDetail(this.data.galleryId, pagination.getNextPage(), pagination.getPageSize()).then(res => {
       // console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)
@@ -184,13 +184,13 @@ Page({
 
   _showLoadingCenter() {
     this.setData({
-      loading_center: true
+      loadingCenter: true
     })
   },
 
   _hideLoadingCenter() {
     this.setData({
-      loading_center: false
+      loadingCenter: false
     })
   }
 })

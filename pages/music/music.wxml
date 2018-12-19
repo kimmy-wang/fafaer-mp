@@ -1,2 +1,26 @@
 <!--pages/music/music.wxml-->
-<text>pages/music/music.wxml</text>
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索专辑 / 电台</text>
+    </view>
+  </view>
+  <view class="albums-container">
+    <block wx:key="{{item.id}}" wx:for="{{dataArray}}">
+      <v-album album="{{item}}" class="album" />
+    </block>
+  </view>
+  
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到专辑 / 电台</text>
+</view>
+
+<v-search wx:else more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+  <view slot="datas" wx:if="{{search.searching}}" class="albums-container">
+    <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
+      <v-album album="{{item}}" class="album" />
+    </block>
+  </view>
+</v-search>

@@ -34,9 +34,9 @@ Page({
     total: 0,
     noneResult: false,
     loading: false,
-    loading_center: false,
-    search_url: '',
-    videocollection_id: '',
+    loadingCenter: false,
+    searchUrl: '',
+    videocollectionId: '',
     historySearchType: HISTORY_SEARCH_VIDEO_COLLECTION_VIDEO
   },
 
@@ -46,8 +46,8 @@ Page({
   onLoad: function (options) {
     const { id, name } = options
     this.setData({
-      search_url: `videos/detail?videocollection_id=${id}&`,
-      videocollection_id: id
+      searchUrl: `videos/detail?videocollection_id=${id}&`,
+      videocollectionId: id
     })
     this._showLoadingCenter()
     getVideoCollectionDetail(id, pagination.getFirstPage(), pagination.getPageSize()).then(res => {
@@ -97,7 +97,32 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    const more = random(16)
+    this.setData({
+      more
+    })
 
+    if (this._getLoading()) {
+      return
+    }
+
+    if (!this._hasMoreData()) {
+      wx.showToast({
+        title: '没有数据啦',
+        icon: 'none'
+      })
+      return
+    }
+
+    this._setLoading(true)
+    getVideoCollectionDetail(this.data.videocollectionId, pagination.getNextPage(), pagination.getPageSize()).then(res => {
+      // console.log(res)
+      this._setMoreData(res.results)
+      this._setLoading(false)
+    }).catch(error => {
+      this._setLoading(false)
+      handleError()
+    })
   },
 
   /**
@@ -156,13 +181,13 @@ Page({
 
   _showLoadingCenter() {
     this.setData({
-      loading_center: true
+      loadingCenter: true
     })
   },
 
   _hideLoadingCenter() {
     this.setData({
-      loading_center: false
+      loadingCenter: false
     })
   }
 })

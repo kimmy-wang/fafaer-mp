@@ -1,7 +1,8 @@
-// pages/gallery/gallery.js
+// pages/music-detail/music-detail.js
 import {
-  getGallery
-} from '../../models/gallery.js'
+  getAlbumDetail,
+  getSongListByAlbumId
+} from '../../models/music.js'
 
 import {
   random,
@@ -13,7 +14,7 @@ import {
 } from '../../models/Pagination.js'
 
 import {
-  HISTORY_SEARCH_GALLERY
+  HISTORY_SEARCH_MUSIC_SONG
 } from '../../utils/constants.js'
 
 const pagination = new Pagination()
@@ -28,7 +29,6 @@ Page({
       searchDataArray: [],
       searching: false
     },
-
     dataArray: [],
     searching: false,
     more: '',
@@ -36,20 +36,35 @@ Page({
     noneResult: false,
     loading: false,
     loadingCenter: false,
-
-    searchUrl: 'photos/gallery?',
-    historySearchType: HISTORY_SEARCH_GALLERY
+    searchUrl: '',
+    albumId: '',
+    album: null,
+    historySearchType: HISTORY_SEARCH_MUSIC_SONG
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { id, name } = options
+    wx.setNavigationBarTitle({
+      title: name
+    })
+
+    this.setData({
+      searchUrl: `music/album_detail/?album_id=${id}&`,
+      albumId: id
+    })
     this._showLoadingCenter()
-    getGallery(pagination.getFirstPage(), pagination.getPageSize()).then(res => {
-      // console.log(res)
-      this._setMoreData(res.results)
-      this._setTotal(res.count)
+    const albumPromise = getAlbumDetail(id)
+    const songsPromise = getSongListByAlbumId(id, pagination.getFirstPage(), pagination.getPageSize())
+    Promise.all([albumPromise, songsPromise]).then(res => {
+      console.log(res)
+      this.setData({
+        album: res[0]
+      })
+      this._setMoreData(res[1].results)
+      this._setTotal(res[1].count)
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
@@ -108,8 +123,8 @@ Page({
     }
 
     this._setLoading(true)
-    getGallery(pagination.getNextPage(), pagination.getPageSize()).then(res => {
-      // console.log(res)
+    getSongListByAlbumId(this.data.albumId, pagination.getNextPage(), pagination.getPageSize()).then(res => {
+      console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)
     }).catch(error => {
@@ -135,6 +150,7 @@ Page({
 
   _loadSearchData(e) {
     const { data, searching } = e.detail
+    // console.log(data)
     const searchDataArray = this.data.search.searchDataArray.concat(data)
     this.setData({
       search: {
