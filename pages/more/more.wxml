@@ -22,12 +22,14 @@
 
 <v-mask bindclick="onMaskClick" wx:if="{{showConfirmWindow}}" />
 
-<view class="slider-container" wx:if="{{showConfirmWindow}}">
+<view class="setting-container" wx:if="{{showConfirmWindow}}">
   <text>{{title}}设置</text>
-  <slider bindchange="onChange" wx:if="{{type === 'MORE_ARTICLE'}}" value="{{articleNum}}" min="5" step="1" max="20" block-size="22" show-value/>
-  <slider bindchange="onChange" wx:if="{{type === 'MORE_MUSIC'}}" value="{{musicNum}}" min="5" step="1" max="20" block-size="22" show-value/>
-  <slider bindchange="onChange" wx:if="{{type === 'MORE_VIDEO'}}" value="{{videoNum}}" min="5" step="1" max="20" block-size="22" show-value/>
-  <slider bindchange="onChange" wx:if="{{type === 'MORE_PHOTO'}}" value="{{photoNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+  <view class="slider-container">
+    <slider bindchange="onChange" wx:if="{{type === 'MORE_ARTICLE'}}" value="{{articleNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+    <slider bindchange="onChange" wx:if="{{type === 'MORE_MUSIC'}}" value="{{musicNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+    <slider bindchange="onChange" wx:if="{{type === 'MORE_VIDEO'}}" value="{{videoNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+    <slider bindchange="onChange" wx:if="{{type === 'MORE_PHOTO'}}" value="{{photoNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+  </view>
   <view class="btn-container">
     <text bindtap="onCancel">取消</text>
     <text bindtap="onConfirm">确定</text>
