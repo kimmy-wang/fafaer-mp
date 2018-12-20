@@ -3,13 +3,33 @@
   <block wx:for="{{settings}}" wx:key="*this" wx:for-item="parent">
     <view class="sub-sontainer">
       <block wx:for="{{parent}}" wx:key="{{item.id}}">
-        <v-more class="more">
+        <v-more bindclick="onItemClick" item="{{item}}" class="more">
           <view slot="content" class="content-container">
             <image src="{{item.icon}}" />
             <text>{{item.title}}</text>
+          </view>
+          <view slot="num" class="num-container">
+            <text wx:if="{{item.type === 'MORE_ARTICLE'}}">{{articleNum}}</text>
+            <text wx:if="{{item.type === 'MORE_MUSIC'}}">{{musicNum}}</text>
+            <text wx:if="{{item.type === 'MORE_VIDEO'}}">{{videoNum}}</text>
+            <text wx:if="{{item.type === 'MORE_PHOTO'}}">{{photoNum}}</text>
           </view>
         </v-more>
       </block>
     </view>
   </block>
+</view>
+
+<v-mask bindclick="onMaskClick" wx:if="{{showConfirmWindow}}" />
+
+<view class="slider-container" wx:if="{{showConfirmWindow}}">
+  <text>{{title}}设置</text>
+  <slider bindchange="onChange" wx:if="{{type === 'MORE_ARTICLE'}}" value="{{articleNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+  <slider bindchange="onChange" wx:if="{{type === 'MORE_MUSIC'}}" value="{{musicNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+  <slider bindchange="onChange" wx:if="{{type === 'MORE_VIDEO'}}" value="{{videoNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+  <slider bindchange="onChange" wx:if="{{type === 'MORE_PHOTO'}}" value="{{photoNum}}" min="5" step="1" max="20" block-size="22" show-value/>
+  <view class="btn-container">
+    <text bindtap="onCancel">取消</text>
+    <text bindtap="onConfirm">确定</text>
+  </view>
 </view>

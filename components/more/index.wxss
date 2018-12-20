@@ -18,7 +18,8 @@
   height: 50rpx;
 } */
 
-.container > image {
+/* .container > image {
   width: 50rpx;
   height: 50rpx;
-}
+} */
+

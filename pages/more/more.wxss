@@ -40,3 +40,55 @@
   margin-left: 30rpx;
   color: #555;
 }
+
+.num-container > text {
+  color: #555;
+  padding: 10rpx 30rpx;
+}
+
+.slider-container {
+  width: 90%;
+  height: 280rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 5%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  z-index: 100;
+  padding: 0 1%;
+}
+
+.slider-container > text {
+  text-align: center;
+  color: #333;
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 34rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-top: 1px solid #e5e5e5;
+}
+
+.btn-container > text {
+  width: 44%;
+  text-align: center;
+  border-right: 1px solid #e5e5e5;
+  color: #E64340;
+}
+
+.btn-container > text:last-child {
+  border-right: none;
+  color: #09BB07;
+}

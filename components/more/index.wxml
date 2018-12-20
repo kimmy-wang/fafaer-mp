@@ -1,9 +1,10 @@
 <!--components/more/index.wxml-->
-<view class="container">
+<view bindtap="onClick" class="container">
   <!-- <view class="sub-container">
     <image src="images/right.png" />
     <text>1234</text>
   </view> -->
   <slot name="content"></slot>
-  <image src="images/right.png" />
+  <!-- <image src="images/right.png" /> -->
+  <slot name="num"></slot>
 </view>
