@@ -26,6 +26,8 @@ const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_MUSIC)
 pagination.setPageSize(pageSize)
 
+const mMgr = wx.getBackgroundAudioManager()
+
 Page({
 
   /**
@@ -46,7 +48,12 @@ Page({
     searchUrl: '',
     albumId: '',
     album: null,
-    historySearchType: HISTORY_SEARCH_MUSIC_SONG
+    historySearchType: HISTORY_SEARCH_MUSIC_SONG,
+
+    playing: false,
+    currentSong: null,
+    duration: 0,
+    currentTime: 0
   },
 
   /**
@@ -77,6 +84,11 @@ Page({
       this._hideLoadingCenter()
       handleError()
     })
+  },
+
+  onReady() {
+    this._recoverStatus()
+    this._switchMusic()
   },
 
   onSearching() {
@@ -138,6 +150,32 @@ Page({
       this._setLoading(false)
       handleError()
     })
+  },
+
+  onSongClick(e) {
+    const { song } = e.detail
+    this.setData({
+      currentSong: song
+    })
+    this.onPlayMiniClick()
+  },
+
+  onPlayMiniClick(e) {
+    const { playing, currentSong } = this.data
+
+    if (!playing) {
+      this.setData({
+        playing: true
+      })
+      mMgr.title = currentSong.name
+      mMgr.src = currentSong.file
+    }
+    else {
+      this.setData({
+        playing: false
+      })
+      mMgr.pause()
+    }
   },
 
   /**
@@ -204,6 +242,50 @@ Page({
   _hideLoadingCenter() {
     this.setData({
       loadingCenter: false
+    })
+  },
+
+  _recoverStatus() {
+    const { currentSong } = this.data
+    if(!currentSong) {
+      return
+    }
+    if (mMgr.paused) {
+      this.setData({
+        playing: false
+      })
+      return
+    }
+
+    if (mMgr.src === currentSong.file) {
+      this.setData({
+        playing: true
+      })
+    }
+  },
+
+  _switchMusic() {
+    mMgr.onCanplay(() => {
+      this.setData({
+        duration: Math.ceil(mMgr.duration)
+      })
+    })
+    mMgr.onTimeUpdate(() => {
+      this.setData({
+        currentTime: Math.ceil(mMgr.currentTime)
+      })
+    })
+    mMgr.onPlay(e => {
+      this._recoverStatus()
+    })
+    mMgr.onPause(() => {
+      this._recoverStatus()
+    })
+    mMgr.onStop(() => {
+      this._recoverStatus()
+    })
+    mMgr.onEnded(() => {
+      this._recoverStatus()
     })
   }
 })

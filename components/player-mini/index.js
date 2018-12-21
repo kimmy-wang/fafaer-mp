@@ -4,7 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    playing: Boolean,
+    song: Object,
+    duration: Number,
+    currentTime: Number
   },
 
   /**
@@ -18,6 +21,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onPlayTap() {
+      this.triggerEvent("click", {}, {})
+    }
   }
 })

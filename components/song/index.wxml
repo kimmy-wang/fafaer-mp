@@ -1,5 +1,5 @@
 <!--components/song/index.wxml-->
-<view class="container">
+<view bindtap="onSongClick" class="container">
   <view class="left">
     <text class="title">{{song.name}}</text>
     <text class="name">{{song.singer.nickname}}</text>

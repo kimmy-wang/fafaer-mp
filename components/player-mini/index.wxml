@@ -5,15 +5,15 @@
   </view>
   <view class="sub-container">
     <view class="slider-container">
-      <slider bindchange="onChange" block-size="12" show-value/>
+      <slider bindchange="onChange" block-size="12" min="0" max="{{duration}}" value="{{currentTime}}" show-value/>
     </view>
     <view class="wrapper">
       <view class="content-container">
-        <text class="title">ablum title</text>
-        <text class="name">singer name</text>
+        <text class="title">{{song.name}}</text>
+        <text class="name">{{song.singer.nickname}}</text>
       </view>
       <view class="operate-container">
-        <image src="images/play.png" />
+        <image catchtap="onPlayTap" src="{{playing ? 'images/pause.png' : 'images/play.png'}}" />
         <image src="images/next.png" />
         <image src="images/next.png" />
       </view>

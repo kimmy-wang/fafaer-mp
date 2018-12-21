@@ -22,16 +22,16 @@
     </view>
     <view class="songs-container">
       <block wx:key="{{item.song.id}}" wx:for="{{dataArray}}">
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
-        <v-song song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
       </block>
     </view>
   </view>
@@ -44,7 +44,7 @@
 <v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" wx:if="{{searching}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="songs-container margin-top">
     <block wx:key="{{item.song.id}}" wx:for="{{search.searchDataArray}}">
-      <v-song song="{{item.song}}" class="song" />
+      <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
     </block>
   </view>
 </v-search>
@@ -54,5 +54,5 @@
 </view> -->
 
 <view class="player-mini-container">
-  <v-player-mini class="player-mini" />
+  <v-player-mini song="{{currentSong}}" playing="{{playing}}" duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindclick="onPlayMiniClick" />
 </view>

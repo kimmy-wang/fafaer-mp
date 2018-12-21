@@ -166,7 +166,7 @@
   left: 0;
   z-index: 123;
   background-color: #fff;
-}*/
+} */
 
 .player-mini-container {
   position: fixed;
