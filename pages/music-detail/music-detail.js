@@ -46,9 +46,7 @@ Page({
     searchUrl: '',
     albumId: '',
     album: null,
-    historySearchType: HISTORY_SEARCH_MUSIC_SONG,
-
-    fullScreen: true
+    historySearchType: HISTORY_SEARCH_MUSIC_SONG
   },
 
   /**
