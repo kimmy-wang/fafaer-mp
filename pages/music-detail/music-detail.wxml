@@ -54,5 +54,5 @@
 </view> -->
 
 <view class="player-mini-container">
-  <v-player-mini class="player-mini" wx:if="{{!fullScreen}}" />
+  <v-player-mini class="player-mini" />
 </view>
