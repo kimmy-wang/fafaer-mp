@@ -13,11 +13,17 @@ import {
 } from '../../models/Pagination.js'
 
 import {
-  HISTORY_SEARCH_GALLERY_PHOTO
+  HISTORY_SEARCH_GALLERY_PHOTO,
+  MORE_PHOTO
 } from '../../utils/constants.js'
 
+import {
+  getCacheNum
+} from '../../utils/more.js'
+
 const pagination = new Pagination()
-pagination.setPageSize(6)
+const pageSize = getCacheNum(MORE_PHOTO)
+pagination.setPageSize(pageSize)
 
 Page({
 

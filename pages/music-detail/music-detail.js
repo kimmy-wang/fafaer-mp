@@ -14,10 +14,17 @@ import {
 } from '../../models/Pagination.js'
 
 import {
-  HISTORY_SEARCH_MUSIC_SONG
+  HISTORY_SEARCH_MUSIC_SONG,
+  MORE_MUSIC
 } from '../../utils/constants.js'
 
+import {
+  getCacheNum
+} from '../../utils/more.js'
+
 const pagination = new Pagination()
+const pageSize = getCacheNum(MORE_MUSIC)
+pagination.setPageSize(pageSize)
 
 Page({
 
@@ -39,7 +46,9 @@ Page({
     searchUrl: '',
     albumId: '',
     album: null,
-    historySearchType: HISTORY_SEARCH_MUSIC_SONG
+    historySearchType: HISTORY_SEARCH_MUSIC_SONG,
+
+    fullScreen: true
   },
 
   /**
@@ -59,7 +68,7 @@ Page({
     const albumPromise = getAlbumDetail(id)
     const songsPromise = getSongListByAlbumId(id, pagination.getFirstPage(), pagination.getPageSize())
     Promise.all([albumPromise, songsPromise]).then(res => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         album: res[0]
       })

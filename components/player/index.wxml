@@ -1,2 +1,4 @@
 <!--components/player/index.wxml-->
-<text>components/player/index.wxml</text>
+<view>
+  <text>player</text>
+</view>

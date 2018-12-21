@@ -8,7 +8,8 @@
     "pages/video-collection-detail/video-collection-detail",
     "pages/gallery/gallery",
     "pages/gallery-detail/gallery-detail",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/player/player"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -6,7 +6,7 @@
       <text>搜索音乐</text>
     </view>
   </view>
-  <view class="songs-wrapper margin-top">
+  <view class="songs-wrapper margin-top margin-bottom">
     <view class="album-container">
       <view class="img-container">
         <image src="{{album.background_img}}" />
@@ -23,6 +23,15 @@
     <view class="songs-container">
       <block wx:key="{{item.song.id}}" wx:for="{{dataArray}}">
         <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
+        <v-song song="{{item.song}}" class="song" />
       </block>
     </view>
   </view>
@@ -32,10 +41,18 @@
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到音乐</text>
 </view>
 
-<v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" wx:else bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
+<v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" wx:if="{{searching}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="songs-container margin-top">
     <block wx:key="{{item.song.id}}" wx:for="{{search.searchDataArray}}">
       <v-song song="{{item.song}}" class="song" />
     </block>
   </view>
 </v-search>
+
+<!-- <view class="player-container">
+  <v-player class="player" wx:if="{{!fullScreen}}" />
+</view> -->
+
+<view class="player-mini-container">
+  <v-player-mini class="player-mini" wx:if="{{!fullScreen}}" />
+</view>

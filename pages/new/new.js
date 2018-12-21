@@ -13,10 +13,17 @@ import {
 } from '../../models/Pagination.js'
 
 import {
-  HISTORY_SEARCH_ARTICLE
+  HISTORY_SEARCH_ARTICLE,
+  MORE_ARTICLE
 } from '../../utils/constants.js'
 
+import {
+  getCacheNum
+} from '../../utils/more.js'
+
 const pagination = new Pagination()
+const pageSize = getCacheNum(MORE_ARTICLE)
+pagination.setPageSize(pageSize)
 
 Page({
 

@@ -13,10 +13,17 @@ import {
 } from '../../models/Pagination.js'
 
 import {
-  HISTORY_SEARCH_VIDEO_COLLECTION
-} from "../../utils/constants.js";
+  HISTORY_SEARCH_VIDEO_COLLECTION,
+  MORE_VIDEO
+} from "../../utils/constants.js"
+
+import {
+  getCacheNum
+} from '../../utils/more.js'
 
 const pagination = new Pagination()
+const pageSize = getCacheNum(MORE_VIDEO)
+pagination.setPageSize(pageSize)
 
 Page({
 

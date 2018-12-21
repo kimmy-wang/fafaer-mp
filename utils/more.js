@@ -43,26 +43,36 @@ const cacheActions = {
     })
   },
 
-  [MORE_MUSIC](that, type) {
+  [MORE_MUSIC](that, value) {
     that.setData({
       musicNum: value
     })
   },
 
-  [MORE_VIDEO](that, type) {
+  [MORE_VIDEO](that, value) {
     that.setData({
       videoNum: value
     })
   },
 
-  [MORE_PHOTO](that, type) {
+  [MORE_PHOTO](that, value) {
     that.setData({
       photoNum: value
     })
   },
 }
 
+const getCacheNum = type => {
+  return wx.getStorageSync(type) || 5
+}
+
+const setCacheNum = (type, value) => {
+  wx.setStorageSync(type, value)
+}
+
 export {
   settings,
-  cacheActions
+  cacheActions,
+  getCacheNum,
+  setCacheNum
 } 

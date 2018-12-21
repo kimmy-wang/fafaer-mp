@@ -1,0 +1,4 @@
+<!--pages/player/player.wxml-->
+<view class="player-container">
+  <v-player class="player" wx:if="{{fullScreen}}" />
+</view>

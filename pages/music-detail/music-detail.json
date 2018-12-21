@@ -3,6 +3,8 @@
   "usingComponents": {
     "v-search": "/components/search/index",
     "v-song": "/components/song/index",
-    "v-loading": "/components/loading/index"
+    "v-loading": "/components/loading/index",
+    "v-player": "/components/player/index",
+    "v-player-mini": "/components/player-mini/index"
   }
 }

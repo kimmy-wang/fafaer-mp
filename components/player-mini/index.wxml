@@ -1,0 +1,22 @@
+<!--components/player-mini/index.wxml-->
+<view class="container">
+  <view class="img-container">
+    <image src="images/cover_img.png" />
+  </view>
+  <view class="sub-container">
+    <view class="slider-container">
+      <slider bindchange="onChange" block-size="12" show-value/>
+    </view>
+    <view class="wrapper">
+      <view class="content-container">
+        <text class="title">ablum title</text>
+        <text class="name">singer name</text>
+      </view>
+      <view class="operate-container">
+        <image src="images/play.png" />
+        <image src="images/next.png" />
+        <image src="images/next.png" />
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,7 +1,9 @@
 // pages/more/more.js
 import {
   settings,
-  cacheActions
+  cacheActions,
+  getCacheNum,
+  setCacheNum
 } from '../../utils/more.js'
 
 import {
@@ -35,10 +37,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const articleNum = wx.getStorageSync(MORE_ARTICLE) || 5
-    const musicNum = wx.getStorageSync(MORE_MUSIC) || 5
-    const videoNum = wx.getStorageSync(MORE_VIDEO) || 5
-    const photoNum = wx.getStorageSync(MORE_PHOTO) || 5
+    const articleNum = getCacheNum(MORE_ARTICLE)
+    const musicNum = getCacheNum(MORE_MUSIC)
+    const videoNum = getCacheNum(MORE_VIDEO)
+    const photoNum = getCacheNum(MORE_PHOTO)
     this.setData({
       articleNum,
       musicNum,
@@ -126,25 +128,25 @@ Page({
         this.setData({
           articleNum: articleCacheNum
         })
-        wx.setStorageSync(MORE_ARTICLE, articleCacheNum)
+        setCacheNum(MORE_ARTICLE, articleCacheNum)
         break
       case MORE_MUSIC:
         this.setData({
           musicNum: musicCacheNum
         })
-        wx.setStorageSync(MORE_MUSIC, musicCacheNum)
+        setCacheNum(MORE_MUSIC, musicCacheNum)
         break
       case MORE_VIDEO:
         this.setData({
           videoNum: videoCacheNum
         })
-        wx.setStorageSync(MORE_VIDEO, videoCacheNum)
+        setCacheNum(MORE_VIDEO, videoCacheNum)
         break
       case MORE_PHOTO:
         this.setData({
           photoNum: photoCacheNum
         })
-        wx.setStorageSync(MORE_PHOTO, photoCacheNum)
+        setCacheNum(MORE_PHOTO, photoCacheNum)
         break
       default:
         return

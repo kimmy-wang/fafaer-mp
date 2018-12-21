@@ -14,10 +14,17 @@ import {
 } from '../../models/Pagination.js'
 
 import {
-  HISTORY_SEARCH_MUSIC
-} from "../../utils/constants.js";
+  HISTORY_SEARCH_MUSIC,
+  MORE_MUSIC
+} from "../../utils/constants.js"
+
+import {
+  getCacheNum
+} from '../../utils/more.js'
 
 const pagination = new Pagination()
+const pageSize = getCacheNum(MORE_MUSIC)
+pagination.setPageSize(pageSize)
 
 Page({
 

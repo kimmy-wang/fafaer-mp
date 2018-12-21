@@ -68,7 +68,7 @@
   padding-bottom: 20rpx;
   height: 80rpx;
   line-height: 80rpx;
-  font-size: 40rpx;
+  font-size: 44rpx;
   border-bottom: 1px solid #e5e5e5;
 }
 
