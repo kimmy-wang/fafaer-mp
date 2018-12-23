@@ -7,7 +7,8 @@ Component({
     playing: Boolean,
     song: Object,
     duration: Number,
-    currentTime: Number
+    currentTime: Number,
+    coverImg: String
   },
 
   /**

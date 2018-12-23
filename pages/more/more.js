@@ -3,7 +3,10 @@ import {
   settings,
   cacheActions,
   getCacheNum,
-  setCacheNum
+  setCacheNum,
+
+  getShowConfirmOnce,
+  setShowConfirmOnce
 } from '../../utils/more.js'
 
 import {
@@ -36,7 +39,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     const articleNum = getCacheNum(MORE_ARTICLE)
     const musicNum = getCacheNum(MORE_MUSIC)
     const videoNum = getCacheNum(MORE_VIDEO)
@@ -47,17 +50,33 @@ Page({
       videoNum,
       photoNum
     })
+
+    const showConfirmOnce = getShowConfirmOnce()
+    !showConfirmOnce && wx.showModal({
+      title: "提示",
+      content: "分页设置: 每页加载数量",
+      showCancel: false,
+      confirmText: "朕已阅",
+      success(res) {
+        if (res.confirm) {
+          setShowConfirmOnce()
+        }
+      }
+    })
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
   onItemClick(e) {
-    const { type, title } = e.detail
+    const {
+      type,
+      title
+    } = e.detail
     this._showConfirmWindow()
     this.setData({
       type,
@@ -81,8 +100,12 @@ Page({
   },
 
   onChange(e) {
-    const { value } = e.detail
-    const { type } = this.data
+    const {
+      value
+    } = e.detail
+    const {
+      type
+    } = this.data
     switch (type) {
       case MORE_ARTICLE:
         this.setData({
@@ -122,7 +145,13 @@ Page({
   },
 
   _onConfirm() {
-    const { type, articleCacheNum, musicCacheNum, videoCacheNum, photoCacheNum } = this.data
+    const {
+      type,
+      articleCacheNum,
+      musicCacheNum,
+      videoCacheNum,
+      photoCacheNum
+    } = this.data
     switch (type) {
       case MORE_ARTICLE:
         this.setData({

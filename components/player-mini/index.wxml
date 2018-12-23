@@ -1,7 +1,7 @@
 <!--components/player-mini/index.wxml-->
 <view class="container">
   <view class="img-container">
-    <image src="images/cover_img.png" />
+    <image src="{{coverImg}}" />
   </view>
   <view class="sub-container">
     <view class="slider-container">

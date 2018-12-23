@@ -39,14 +39,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "music",
-					"pathName": "pages/music/music",
-					"query": ""
-				}
-			]
+			"list": []
 		}
 	}
 }

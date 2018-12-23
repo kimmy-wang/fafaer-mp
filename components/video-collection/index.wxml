@@ -1,6 +1,6 @@
 <!--components/video-collection/index.wxml-->
 <view bindtap="showVideoCollectionDetail" class="container">
-  <image src="images/cover_img.png" />
+  <image src="{{videoCollection.cover_img}}" />
   <view class="sub-container">
     <text class="title">{{videoCollection.name}}</text>
     <text class="content">{{videoCollection.desc}}</text>

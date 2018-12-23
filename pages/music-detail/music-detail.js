@@ -265,14 +265,17 @@ Page({
   },
 
   _switchMusic() {
-    mMgr.onCanplay(() => {
-      this.setData({
-        duration: Math.ceil(mMgr.duration)
-      })
-    })
+    // mMgr.onCanplay(() => {
+    //   this.setData({
+    //     duration: Math.ceil(mMgr.duration)
+    //   })
+    // })
     mMgr.onTimeUpdate(() => {
+      // console.log("onTimeUpdate", Math.ceil(mMgr.currentTime))
+      // console.log("onTimeUpdateduration", Math.ceil(mMgr.duration))
       this.setData({
-        currentTime: Math.ceil(mMgr.currentTime)
+        currentTime: Math.ceil(mMgr.currentTime),
+        duration: Math.ceil(mMgr.duration)
       })
     })
     mMgr.onPlay(e => {

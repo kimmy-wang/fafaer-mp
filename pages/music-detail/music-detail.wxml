@@ -23,15 +23,6 @@
     <view class="songs-container">
       <block wx:key="{{item.song.id}}" wx:for="{{dataArray}}">
         <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
       </block>
     </view>
   </view>
@@ -54,5 +45,5 @@
 </view> -->
 
 <view class="player-mini-container">
-  <v-player-mini song="{{currentSong}}" playing="{{playing}}" duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindclick="onPlayMiniClick" />
+  <v-player-mini cover-img="{{album.cover_img}}" song="{{currentSong}}" playing="{{playing}}" duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindclick="onPlayMiniClick" />
 </view>

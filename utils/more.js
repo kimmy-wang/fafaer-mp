@@ -2,7 +2,9 @@ import {
   MORE_ARTICLE,
   MORE_MUSIC,
   MORE_VIDEO,
-  MORE_PHOTO
+  MORE_PHOTO,
+
+  MORE_SHOW_CONFIRM_ONCE
 } from '../utils/constants.js'
 
 const settings = [
@@ -62,17 +64,38 @@ const cacheActions = {
   },
 }
 
+
+
 const getCacheNum = type => {
-  return wx.getStorageSync(type) || 5
+  return _getValueFromCache(type) || 5
 }
 
 const setCacheNum = (type, value) => {
-  wx.setStorageSync(type, value)
+  _setValueToCache(type, value)
+}
+
+const getShowConfirmOnce = () => {
+  return _getValueFromCache(MORE_SHOW_CONFIRM_ONCE) || false
+}
+
+const setShowConfirmOnce = () => {
+  _setValueToCache(MORE_SHOW_CONFIRM_ONCE, true)
+}
+
+const _getValueFromCache = key => {
+  return wx.getStorageSync(key)
+}
+
+const _setValueToCache = (key, value) => {
+  wx.setStorageSync(key, value)
 }
 
 export {
   settings,
   cacheActions,
   getCacheNum,
-  setCacheNum
+  setCacheNum,
+
+  getShowConfirmOnce,
+  setShowConfirmOnce
 } 
