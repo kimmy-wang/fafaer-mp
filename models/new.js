@@ -2,7 +2,11 @@ import {
   http
 } from '../utils/http.js'
 
-const getArticles = (page = 1, size = 12) => {
+import {
+  PAGE_SIZE
+} from '../utils/constants.js'
+
+const getArticles = (page = 1, size = PAGE_SIZE) => {
   return http({
     url: `news/articles?page=${page}&size=${size}`
   })

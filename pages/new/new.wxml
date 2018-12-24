@@ -11,7 +11,7 @@
       <v-article article="{{item}}" class="article" />
     </block>
   </view>
-  
+
   <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到文章</text>

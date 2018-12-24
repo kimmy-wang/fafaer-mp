@@ -2,13 +2,17 @@ import {
   http
 } from '../utils/http.js'
 
-const getVideoCollection = (page = 1, size = 12) => {
+import {
+  PAGE_SIZE
+} from '../utils/constants.js'
+
+const getVideoCollection = (page = 1, size = PAGE_SIZE) => {
   return http({
     url: `videos/collection/?page=${page}&size=${size}`
   })
 }
 
-const getVideoCollectionDetail = (id, page = 1, size = 12) => {
+const getVideoCollectionDetail = (id, page = 1, size = PAGE_SIZE) => {
   return http({
     url: `videos/detail/?videocollection_id=${id}&page=${page}&size=${size}`
   })

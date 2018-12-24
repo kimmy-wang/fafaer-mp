@@ -57,7 +57,7 @@ Page({
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
-      handleError()
+      handleError(error)
     })
   },
   
@@ -87,7 +87,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log("onPullDownRefresh")
+    const pageSize = getCacheNum(MORE_ARTICLE)
+    pagination.setPageSize(pageSize)
+    wx.showNavigationBarLoading()
+    getArticles(1, pagination.getPageSize()).then(res => {
+      this._setRefreshData(res.results)
+      this._setTotal(res.count)
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+    }).catch(error => {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+      handleError(error)
+    })
   },
 
   /**
@@ -113,12 +125,11 @@ Page({
 
     this._setLoading(true)
     getArticles(pagination.getNextPage(), pagination.getPageSize()).then(res => {
-      // console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)
     }).catch(error => {
       this._setLoading(false)
-      handleError()
+      handleError(error)
     })
   },
 
@@ -145,6 +156,12 @@ Page({
         searchDataArray,
         searching
       }
+    })
+  },
+
+  _setRefreshData(dataArray) {
+    this.setData({
+      dataArray
     })
   },
 

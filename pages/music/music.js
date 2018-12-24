@@ -59,7 +59,7 @@ Page({
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
-      handleError()
+      handleError(error)
     })
   },
 
@@ -89,14 +89,50 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    const pageSize = getCacheNum(MORE_MUSIC)
+    pagination.setPageSize(pageSize)
+    wx.showNavigationBarLoading()
+    getAlbumList(1, pagination.getPageSize()).then(res => {
+      this._setRefreshData(res.results)
+      this._setTotal(res.count)
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+    }).catch(error => {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+      handleError(error)
+    })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    const more = random(16)
+    this.setData({
+      more
+    })
 
+    if (this._getLoading()) {
+      return
+    }
+
+    if (!this._hasMoreData()) {
+      wx.showToast({
+        title: '没有数据啦',
+        icon: 'none'
+      })
+      return
+    }
+
+    this._setLoading(true)
+    getAlbumList(pagination.getNextPage(), pagination.getPageSize()).then(res => {
+      this._setMoreData(res.results)
+      this._setLoading(false)
+    }).catch(error => {
+      this._setLoading(false)
+      handleError(error)
+    })
   },
 
   /**
@@ -122,6 +158,12 @@ Page({
         searchDataArray,
         searching
       }
+    })
+  },
+
+  _setRefreshData(dataArray) {
+    this.setData({
+      dataArray
     })
   },
 

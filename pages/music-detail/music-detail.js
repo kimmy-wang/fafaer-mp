@@ -73,7 +73,6 @@ Page({
     const albumPromise = getAlbumDetail(id)
     const songsPromise = getSongListByAlbumId(id, pagination.getFirstPage(), pagination.getPageSize())
     Promise.all([albumPromise, songsPromise]).then(res => {
-      // console.log(res)
       this.setData({
         album: res[0]
       })
@@ -82,7 +81,7 @@ Page({
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
-      handleError()
+      handleError(error)
     })
   },
 
@@ -117,7 +116,25 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    const pageSize = getCacheNum(MORE_MUSIC)
+    pagination.setPageSize(pageSize)
+    const { albumId } = this.data
+    wx.showNavigationBarLoading()
+    const albumPromise = getAlbumDetail(albumId)
+    const songsPromise = getSongListByAlbumId(albumId, 1, pagination.getPageSize())
+    Promise.all([albumPromise, songsPromise]).then(res => {
+      this.setData({
+        album: res[0]
+      })
+      this._setRefreshData(res[1].results)
+      this._setTotal(res[1].count)
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+    }).catch(error => {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+      handleError(error)
+    })
   },
 
   /**
@@ -148,7 +165,7 @@ Page({
       this._setLoading(false)
     }).catch(error => {
       this._setLoading(false)
-      handleError()
+      handleError(error)
     })
   },
 
@@ -195,13 +212,18 @@ Page({
 
   _loadSearchData(e) {
     const { data, searching } = e.detail
-    // console.log(data)
     const searchDataArray = this.data.search.searchDataArray.concat(data)
     this.setData({
       search: {
         searchDataArray,
         searching
       }
+    })
+  },
+
+  _setRefreshData(dataArray) {
+    this.setData({
+      dataArray
     })
   },
 

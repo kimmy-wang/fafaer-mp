@@ -15,7 +15,9 @@ import {
   MORE_VIDEO,
   MORE_PHOTO,
   MORE_ADMIRATION,
-  MORE_ABOUT
+  MORE_ABOUT,
+
+  PAGE_SIZE
 } from '../../utils/constants.js'
 
 Page({
@@ -27,15 +29,17 @@ Page({
     settings: settings,
     type: '',
     title: '',
+    min: PAGE_SIZE,
+    max: 20,
     showConfirmWindow: false,
-    articleNum: 5,
-    musicNum: 5,
-    videoNum: 5,
-    photoNum: 5,
-    articleCacheNum: 5,
-    musicCacheNum: 5,
-    videoCacheNum: 5,
-    photoCacheNum: 5
+    articleNum: PAGE_SIZE,
+    musicNum: PAGE_SIZE,
+    videoNum: PAGE_SIZE,
+    photoNum: PAGE_SIZE,
+    articleCacheNum: PAGE_SIZE,
+    musicCacheNum: PAGE_SIZE,
+    videoCacheNum: PAGE_SIZE,
+    photoCacheNum: PAGE_SIZE
   },
 
   /**

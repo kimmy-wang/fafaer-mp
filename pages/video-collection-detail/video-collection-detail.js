@@ -67,7 +67,7 @@ Page({
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
-      handleError()
+      handleError(error)
     })
   },
 
@@ -97,7 +97,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    const pageSize = getCacheNum(MORE_VIDEO)
+    pagination.setPageSize(pageSize)
+    const { videocollectionId } = this.data
+    wx.showNavigationBarLoading()
+    getVideoCollectionDetail(videocollectionId, 1, pagination.getPageSize()).then(res => {
+      this._setRefreshData(res.results)
+      this._setTotal(res.count)
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+    }).catch(error => {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+      handleError(error)
+    })
   },
 
   /**
@@ -123,12 +136,11 @@ Page({
 
     this._setLoading(true)
     getVideoCollectionDetail(this.data.videocollectionId, pagination.getNextPage(), pagination.getPageSize()).then(res => {
-      // console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)
     }).catch(error => {
       this._setLoading(false)
-      handleError()
+      handleError(error)
     })
   },
 
@@ -155,6 +167,12 @@ Page({
         searchDataArray,
         searching
       }
+    })
+  },
+
+  _setRefreshData(dataArray) {
+    this.setData({
+      dataArray
     })
   },
 

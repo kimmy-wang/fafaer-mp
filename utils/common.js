@@ -9,7 +9,8 @@ const random = n => {
   return res;
 }
 
-const handleError = () => {
+const handleError = error => {
+  // console.log(error)
   wx.showToast({
     title: '网络错误',
     icon: 'none'

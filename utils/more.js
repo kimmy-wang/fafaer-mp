@@ -6,7 +6,9 @@ import {
   MORE_ADMIRATION,
   MORE_ABOUT,
 
-  MORE_SHOW_CONFIRM_ONCE
+  MORE_SHOW_CONFIRM_ONCE,
+
+  PAGE_SIZE
 } from '../utils/constants.js'
 
 const settings = [
@@ -81,7 +83,7 @@ const cacheActions = {
 
 
 const getCacheNum = type => {
-  return _getValueFromCache(type) || 5
+  return _getValueFromCache(type) || PAGE_SIZE
 }
 
 const setCacheNum = (type, value) => {

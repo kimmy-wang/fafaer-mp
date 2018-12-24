@@ -58,7 +58,6 @@ Page({
     })
     this._showLoadingCenter()
     getGalleryDetail(id, pagination.getFirstPage(), pagination.getPageSize()).then(res => {
-      // console.log(res)
       wx.setNavigationBarTitle({
         title: name
       })
@@ -68,7 +67,7 @@ Page({
       this._hideLoadingCenter()
     }).catch(error => {
       this._hideLoadingCenter()
-      handleError()
+      handleError(error)
     })
   },
 
@@ -98,7 +97,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    const pageSize = getCacheNum(MORE_PHOTO)
+    pagination.setPageSize(pageSize)
 
+    const { galleryId } = this.data
+    wx.showNavigationBarLoading()
+    getGalleryDetail(galleryId, 1, pagination.getPageSize()).then(res => {
+      this._setRefreshData(res.results)
+      this._setTotal(res.count)
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+    }).catch(error => {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+      handleError(error)
+    })
   },
 
   /**
@@ -124,12 +137,11 @@ Page({
 
     this._setLoading(true)
     getGalleryDetail(this.data.galleryId, pagination.getNextPage(), pagination.getPageSize()).then(res => {
-      // console.log(res)
       this._setMoreData(res.results)
       this._setLoading(false)
     }).catch(error => {
       this._setLoading(false)
-      handleError()
+      handleError(error)
     })
   },
 
@@ -157,6 +169,12 @@ Page({
         searchDataArray,
         searching
       }
+    })
+  },
+
+  _setRefreshData(dataArray) {
+    this.setData({
+      dataArray
     })
   },
 

@@ -1,5 +1,9 @@
+import {
+  PAGE_SIZE
+} from '../utils/constants.js'
+
 class Pagination {
-  constructor(page = 1, size = 5) {
+  constructor(page = 1, size = PAGE_SIZE) {
     this.page = page
     this.size = size
   }
