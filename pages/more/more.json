@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "更多",
+  "navigationBarTitleText": "设置",
   "usingComponents": {
     "v-more": "/components/more/index",
     "v-mask": "/components/mask/index"

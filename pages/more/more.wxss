@@ -46,6 +46,11 @@
   padding: 10rpx 30rpx;
 }
 
+.num-container > image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .setting-container {
   width: 90%;
   height: 360rpx;

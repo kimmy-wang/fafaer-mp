@@ -13,6 +13,8 @@
             <text wx:if="{{item.type === 'MORE_MUSIC'}}">{{musicNum}}</text>
             <text wx:if="{{item.type === 'MORE_VIDEO'}}">{{videoNum}}</text>
             <text wx:if="{{item.type === 'MORE_PHOTO'}}">{{photoNum}}</text>
+            <image wx:if="{{item.type === 'MORE_ADMIRATION'}}" src="/images/more/right.png" />
+            <image wx:if="{{item.type === 'MORE_ABOUT'}}" src="/images/more/right.png" />
           </view>
         </v-more>
       </block>

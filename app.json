@@ -49,9 +49,9 @@
       },
       {
         "pagePath": "pages/more/more",
-        "text": "更多",
-        "iconPath": "/images/tab/more.png",
-        "selectedIconPath": "/images/tab/more@selected.png"
+        "text": "设置",
+        "iconPath": "/images/tab/setting.png",
+        "selectedIconPath": "/images/tab/setting@selected.png"
       }
     ]
   },

@@ -13,7 +13,9 @@ import {
   MORE_ARTICLE,
   MORE_MUSIC,
   MORE_VIDEO,
-  MORE_PHOTO
+  MORE_PHOTO,
+  MORE_ADMIRATION,
+  MORE_ABOUT
 } from '../../utils/constants.js'
 
 Page({
@@ -77,6 +79,21 @@ Page({
       type,
       title
     } = e.detail
+    if (type === MORE_ADMIRATION) {
+      wx.previewImage({
+        urls: ['https://dev.cdn.chenyifaer.com/admiration.png']
+      })
+      return
+    }
+
+    if (type === MORE_ABOUT) {
+      wx.showToast({
+        title: '别点了, 啥也没有',
+        icon: 'none'
+      })
+      return
+    }
+
     this._showConfirmWindow()
     this.setData({
       type,

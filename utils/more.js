@@ -3,6 +3,8 @@ import {
   MORE_MUSIC,
   MORE_VIDEO,
   MORE_PHOTO,
+  MORE_ADMIRATION,
+  MORE_ABOUT,
 
   MORE_SHOW_CONFIRM_ONCE
 } from '../utils/constants.js'
@@ -26,14 +28,26 @@ const settings = [
       title: "视频集",
       icon: "/images/more/video@fill.png",
       type: MORE_VIDEO
+    },
+    {
+      id: 14,
+      title: "相册",
+      icon: "/images/more/photo@fill.png",
+      type: MORE_PHOTO
     }
   ],
   [
     {
       id: 21,
-      title: "相册",
-      icon: "/images/more/photo@fill.png",
-      type: MORE_PHOTO
+      title: "赞赏",
+      icon: "/images/more/pay@fill.png",
+      type: MORE_ADMIRATION
+    },
+    {
+      id: 22,
+      title: "关于",
+      icon: "/images/more/about@fill.png",
+      type: MORE_ABOUT
     }
   ]
 ]
