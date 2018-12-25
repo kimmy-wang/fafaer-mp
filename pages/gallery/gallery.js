@@ -90,9 +90,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    const { searching } = this.data
+    if (searching) {
+      wx.stopPullDownRefresh()
+      return
+    }
     const pageSize = getCacheNum(MORE_PHOTO)
     pagination.setPageSize(pageSize)
-
     wx.showNavigationBarLoading()
     getGallery(1, pagination.getPageSize()).then(res => {
       this._setRefreshData(res.results)

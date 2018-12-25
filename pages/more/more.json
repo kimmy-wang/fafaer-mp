@@ -3,5 +3,6 @@
   "usingComponents": {
     "v-more": "/components/more/index",
     "v-mask": "/components/mask/index"
-  }
+  },
+  "enablePullDownRefresh": false
 }

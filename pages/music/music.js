@@ -89,6 +89,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    const { searching } = this.data
+    if (searching) {
+      wx.stopPullDownRefresh()
+      return
+    }
     const pageSize = getCacheNum(MORE_MUSIC)
     pagination.setPageSize(pageSize)
     wx.showNavigationBarLoading()
