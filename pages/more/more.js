@@ -36,10 +36,6 @@ Page({
     musicNum: PAGE_SIZE,
     videoNum: PAGE_SIZE,
     photoNum: PAGE_SIZE,
-    articleCacheNum: PAGE_SIZE,
-    musicCacheNum: PAGE_SIZE,
-    videoCacheNum: PAGE_SIZE,
-    photoCacheNum: PAGE_SIZE
   },
 
   /**
@@ -98,11 +94,12 @@ Page({
       return
     }
 
-    this._showConfirmWindow()
     this.setData({
       type,
       title
     })
+
+    this._showConfirmWindow()
   },
 
   onMaskClick() {
@@ -113,44 +110,11 @@ Page({
     this._hideConfirmWindow()
   },
 
-  onConfirm() {
+  onConfirm(e) {
     this._hideConfirmWindow()
-    this._onConfirm()
+    this._onConfirm(e)
     // const { type } = this.data
     // cacheActions[type](this, type);
-  },
-
-  onChange(e) {
-    const {
-      value
-    } = e.detail
-    const {
-      type
-    } = this.data
-    switch (type) {
-      case MORE_ARTICLE:
-        this.setData({
-          articleCacheNum: value
-        })
-        break
-      case MORE_MUSIC:
-        this.setData({
-          musicCacheNum: value
-        })
-        break
-      case MORE_VIDEO:
-        this.setData({
-          videoCacheNum: value
-        })
-        break
-      case MORE_PHOTO:
-        this.setData({
-          photoCacheNum: value
-        })
-        break
-      default:
-        return
-    }
   },
 
   _showConfirmWindow() {
@@ -165,38 +129,29 @@ Page({
     })
   },
 
-  _onConfirm() {
-    const {
-      type,
-      articleCacheNum,
-      musicCacheNum,
-      videoCacheNum,
-      photoCacheNum
-    } = this.data
+  _onConfirm(e) {
+    const {type, value} = e.detail
+    setCacheNum(type, value)
     switch (type) {
       case MORE_ARTICLE:
         this.setData({
-          articleNum: articleCacheNum
+          articleNum: value
         })
-        setCacheNum(MORE_ARTICLE, articleCacheNum)
         break
       case MORE_MUSIC:
         this.setData({
-          musicNum: musicCacheNum
+          musicNum: value
         })
-        setCacheNum(MORE_MUSIC, musicCacheNum)
         break
       case MORE_VIDEO:
         this.setData({
-          videoNum: videoCacheNum
+          videoNum: value
         })
-        setCacheNum(MORE_VIDEO, videoCacheNum)
         break
       case MORE_PHOTO:
         this.setData({
-          photoNum: photoCacheNum
+          photoNum: value
         })
-        setCacheNum(MORE_PHOTO, photoCacheNum)
         break
       default:
         return

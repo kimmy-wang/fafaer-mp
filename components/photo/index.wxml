@@ -1,11 +1,13 @@
 <!--components/photo/index.wxml-->
 <view catchtap="previewImage" class="container">
   <image lazy-load="{{true}}" src="{{photo.file}}" />
-  <view class="description">
-    <text class="title">{{photo.name}}</text>
-    <text class="author">{{photo.desc}}</text>
-    <view class="footer">
-      <text class="content">{{photo.date}}</text>
+  <view class="description-container">
+    <view class="description">
+      <text class="title">{{photo.name}}</text>
+      <text class="author">{{photo.desc}}</text>
+      <view class="footer">
+        <text class="content">{{photo.date}}</text>
+      </view>
     </view>
   </view>
 </view>

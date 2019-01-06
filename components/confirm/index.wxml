@@ -1,0 +1,11 @@
+<!--components/confirm/index.wxml-->
+<view class="setting-container">
+  <text>{{title}}设置</text>
+  <view class="slider-container">
+    <slider bindchange="onChange" value="{{value}}" min="{{min}}" step="{{step}}" max="{{max}}" block-size="22" show-value/>
+  </view>
+  <view class="btn-container">
+    <text bindtap="onCancel">{{cancelText}}</text>
+    <text bindtap="onConfirm">{{confirmText}}</text>
+  </view>
+</view>

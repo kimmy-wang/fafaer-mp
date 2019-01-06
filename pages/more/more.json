@@ -2,7 +2,8 @@
   "navigationBarTitleText": "设置",
   "usingComponents": {
     "v-more": "/components/more/index",
-    "v-mask": "/components/mask/index"
+    "v-mask": "/components/mask/index",
+    "v-confirm": "/components/confirm/index"
   },
   "enablePullDownRefresh": false
 }
