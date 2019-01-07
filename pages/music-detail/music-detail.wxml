@@ -6,7 +6,7 @@
       <text>搜索音乐</text>
     </view>
   </view>
-  <view class="songs-wrapper margin-top margin-bottom">
+  <view class="songs-wrapper margin-top">
     <view class="album-container">
       <view class="img-container">
         <image src="{{album.background_img}}" />
@@ -20,16 +20,28 @@
         </view>
       </view>
     </view>
+  </view>
+  <view class="header-container" style="position:{{headerPosition}};top: {{headerTop}}rpx;">
+    <view class="tab left" bindtap="switchPlayMode">
+      <image src="/images/music/single.png" />
+      <text>单曲循环</text>
+    </view>
+    <view class="tab right" bindtap="happy">
+      <image src="/images/music/happy.png" />
+      <text>O(∩_∩)O</text>
+    </view>
+  </view>
+  <view class="songs-wrapper margin-bottom" style="margin-top:{{marginTop}}rpx;">
     <view class="songs-container">
       <block wx:key="{{item.song.id}}" wx:for="{{dataArray}}">
-        <v-song bindclick="onSongClick" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" index="{{index}}" song="{{item.song}}" class="song" />
       </block>
     </view>
   </view>
 
   <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
-  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到音乐</text>
+  <text wx:if="{{noneResult}}" class="empty-tip">没有音乐</text>
 </view>
 
 <v-search more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" wx:if="{{searching}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
@@ -45,5 +57,6 @@
 </view> -->
 
 <view class="player-mini-container">
-  <v-player-mini cover-img="{{album.cover_img}}" song="{{currentSong}}" playing="{{playing}}" duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindclick="onPlayMiniClick" />
+  <v-player-mini cover-img="{{album.cover_img}}" song="{{currentSong}}" playing="{{playing}}" 
+  duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindclick="onPlayMiniClick" bindnext="onNextMiniClick" />
 </view>

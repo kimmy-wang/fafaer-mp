@@ -24,6 +24,12 @@ Component({
   methods: {
     onPlayTap() {
       this.triggerEvent("click", {}, {})
+    },
+    onNextTap() {
+      this.triggerEvent("next", {}, {})
+    },
+    onListTap() {
+      this.triggerEvent("list", {}, {})
     }
   }
 })

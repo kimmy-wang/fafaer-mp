@@ -74,6 +74,7 @@
 .wrapper .operate-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
   height: 100%;
 }
 
@@ -84,5 +85,7 @@
 }
 
 .wrapper .operate-container > image:last-child {
+  width: 50rpx;
+  height: 50rpx;
   margin-right: 20rpx;
 }

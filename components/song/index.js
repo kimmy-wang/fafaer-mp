@@ -4,7 +4,11 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    song: Object
+    song: Object,
+    index: {
+      type: Number,
+      value: -1
+    }
   },
 
   /**
@@ -19,8 +23,8 @@ Component({
    */
   methods: {
     onSongClick() {
-      const { song } = this.properties
-      this.triggerEvent("click", { song }, {})
+      const { song, index } = this.properties
+      this.triggerEvent("click", { song, index }, {})
     }
   }
 })

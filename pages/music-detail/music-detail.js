@@ -52,20 +52,28 @@ Page({
 
     playing: false,
     currentSong: null,
+    currentSongIndex: -1,
     duration: 0,
-    currentTime: 0
+    currentTime: 0,
+
+    headerPosition: 'none',
+    headerTop: 0,
+    marginTop: 0,
+    windowWidth: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const windowWidth = wx.getSystemInfoSync().windowWidth
     const { id, name } = options
     wx.setNavigationBarTitle({
       title: name
     })
 
     this.setData({
+      windowWidth,
       searchUrl: `music/album_detail/?album_id=${id}&`,
       albumId: id
     })
@@ -90,6 +98,28 @@ Page({
     this._switchMusic()
   },
 
+  /**
+   * 页面滚动处理
+   */
+  onPageScroll(e) {
+    const { scrollTop } = e
+    const { windowWidth, headerPosition } = this.data
+    const height = (400 / 750) * windowWidth;
+    // console.log(scrollTop, height)
+    let currentHeaderPosition = scrollTop >= height ? 'fixed' : 'none'
+    let currentHeaderTop = scrollTop >= height ? 100 : 0
+    let currentMarginTop = scrollTop >= height ? 100 : 0
+    if (currentHeaderPosition === headerPosition) {
+      return
+    }
+    
+    this.setData({
+      headerPosition: currentHeaderPosition,
+      headerTop: currentHeaderTop,
+      marginTop: currentMarginTop
+    })
+  },
+
   onSearching() {
     this.setData({
       searching: true
@@ -109,6 +139,26 @@ Page({
         searchDataArray: [],
         searching: false
       }
+    })
+  },
+
+  /**
+   * 切换音乐播放模式
+   */
+  switchPlayMode() {
+    wx.showToast({
+      title: '客官, 稍等...',
+      icon: 'none'
+    })
+  },
+
+  /**
+   * 皮一下
+   */
+  happy() {
+    wx.showToast({
+      title: '皮一下O(∩_∩)O',
+      icon: 'none'
     })
   },
 
@@ -174,30 +224,71 @@ Page({
     })
   },
 
+  /**
+   * 歌曲点击事件
+   */
   onSongClick(e) {
-    const { song } = e.detail
+    const { song, index } = e.detail
+    // console.log(index)
     this.setData({
-      currentSong: song
+      currentSong: song,
+      currentSongIndex: index,
     })
-    this.onPlayMiniClick()
+    this._onPlayMiniClick()
   },
 
+  /**
+   * 播放
+   */
   onPlayMiniClick(e) {
-    const { playing, currentSong } = this.data
+    const { currentSong, dataArray } = this.data
+    if (currentSong === null) {
+      if(!dataArray || !dataArray.length) {
+        wx.showToast({
+          title: '歌曲列表为空',
+          icon: 'none'
+        })
+        return
+      }
+      this.setData({
+        currentSong: dataArray[0].song,
+        currentSongIndex: 0,
+      })
+    }
+    this._onPlayMiniClick()
+  },
 
-    if (!playing) {
+  /**
+   * 下一首
+   */
+  onNextMiniClick() {
+    const { currentSong, currentSongIndex, dataArray } = this.data
+    if (currentSong === null) {
+      if (!dataArray || !dataArray.length) {
+        wx.showToast({
+          title: '歌曲列表为空',
+          icon: 'none'
+        })
+        return
+      }
       this.setData({
-        playing: true
+        currentSong: dataArray[0].song,
+        currentSongIndex: 0,
       })
-      mMgr.title = currentSong.name
-      mMgr.src = currentSong.file
-    }
-    else {
+    } else {
+      if ((currentSongIndex + 1) === dataArray.length) {
+        wx.showToast({
+          title: '最后一首了',
+          icon: 'none'
+        })
+        return
+      }
       this.setData({
-        playing: false
+        currentSong: dataArray[currentSongIndex + 1].song,
+        currentSongIndex: currentSongIndex + 1,
       })
-      mMgr.pause()
     }
+    this._onPlayMiniClick()
   },
 
   /**
@@ -213,6 +304,24 @@ Page({
 
   updateSearchData(e) {
     this._loadSearchData(e)
+  },
+
+  _onPlayMiniClick() {
+    const { playing, currentSong } = this.data
+
+    if (!playing) {
+      this.setData({
+        playing: true
+      })
+      mMgr.title = currentSong.name
+      mMgr.src = currentSong.file
+    }
+    else {
+      this.setData({
+        playing: false
+      })
+      mMgr.pause()
+    }
   },
 
   _loadSearchData(e) {
