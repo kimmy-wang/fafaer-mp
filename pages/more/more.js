@@ -15,7 +15,9 @@ import {
   MORE_VIDEO,
   MORE_PHOTO,
   MORE_ADMIRATION,
+  MORE_PUBLIC_WELFARE,
   MORE_ABOUT,
+  MORE_SHOW_CONFIRM_ONCE,
 
   PAGE_SIZE
 } from '../../utils/constants.js'
@@ -53,7 +55,7 @@ Page({
       photoNum
     })
 
-    const showConfirmOnce = getShowConfirmOnce()
+    const showConfirmOnce = getShowConfirmOnce(MORE_SHOW_CONFIRM_ONCE)
     !showConfirmOnce && wx.showModal({
       title: "提示",
       content: "分页设置: 每页加载数量",
@@ -61,7 +63,7 @@ Page({
       confirmText: "朕已阅",
       success(res) {
         if (res.confirm) {
-          setShowConfirmOnce()
+          setShowConfirmOnce(MORE_SHOW_CONFIRM_ONCE)
         }
       }
     })
@@ -82,6 +84,13 @@ Page({
     if (type === MORE_ADMIRATION) {
       wx.previewImage({
         urls: ['https://dev.cdn.chenyifaer.com/admiration.png']
+      })
+      return
+    }
+
+    if (type === MORE_PUBLIC_WELFARE) {
+      wx.navigateTo({
+        url: '/pages/public-welfare/public-welfare',
       })
       return
     }

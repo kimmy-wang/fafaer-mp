@@ -1,0 +1,16 @@
+<!--components/public-welfare/index.wxml-->
+<view bindtap="showDetail" class="container">
+  <image lazy-load="{{true}}" src="{{publicWelfare.img}}" />
+  <view class="closed-container" wx:if="{{publicWelfare.closed}}">
+    <view class="closed">
+      <text>已结案</text>
+    </view>
+  </view>
+  <view class="description-container">
+    <view class="description">
+      <text class="title">{{publicWelfare.name}}</text>
+      <text class="desc">{{publicWelfare.desc}}</text>
+      <text class="date">{{publicWelfare.lost_date}}</text>
+    </view>
+  </view>
+</view>

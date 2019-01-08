@@ -1,0 +1,26 @@
+<!--pages/public-welfare/public-welfare.wxml-->
+<view wx:if="{{!searching}}" class="container">
+  <view class="search-container">
+    <view bindtap="onSearching" class="search-box">
+      <image src="/images/icon/search.png" />
+      <text>搜索走失儿童</text>
+    </view>
+  </view>
+  <view class="public-welfare-container">
+    <block wx:key="{{item.id}}" wx:for="{{dataArray}}">
+      <v-public-welfare bindclick="showDetail" public-welfare="{{item}}" class="public-welfare" />
+    </block>
+  </view>
+
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
+  <v-loading class="loading" wx:if="{{loading}}" />
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到走失儿童</text>
+</view>
+
+<v-search wx:else more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch" >
+  <view slot="datas" wx:if="{{search.searching}}" class="public-welfare-container">
+    <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
+      <v-public-welfare public-welfare="{{item}}" class="public-welfare" />
+    </block>
+  </view>
+</v-search>

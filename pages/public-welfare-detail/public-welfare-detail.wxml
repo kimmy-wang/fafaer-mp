@@ -1,0 +1,39 @@
+<!--pages/public-welfare-detail/public-welfare-detail.wxml-->
+<view class="container">
+  <view class="head">
+    <image bindtap="previewImage" src="{{lost.img}}" />
+    <text class="title">{{lost.name}}</text>
+  </view>
+
+  <view class="sub-container">
+    <text class="headline">信息</text>
+    <view class="detail-container">
+      <view class="vertical description">
+        <text>年龄</text>
+        <text>性别</text>
+        <text>走失时间</text>
+        <text>走失地点</text>
+        <text>信息来源</text>
+        <text>是否结案</text>
+      </view>
+      <view class="vertical">
+        <text>{{lost.age}}</text>
+        <text>{{lost.gender === 'female' ? '女' : '男'}}</text>
+        <text>{{lost.lost_date}}</text>
+        <text>{{lost.lost_location}}</text>
+        <text selectable>{{lost.weibo}}</text>
+        <text class="closed">{{lost.closed ? '已结案' : '未结案'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="sub-container">
+    <text class="headline">内容简介</text>
+    <text class="content">{{lost.desc}}</text>
+  </view>
+
+  <view class="sub-container" wx:if="{{lost.closed}}">
+    <text class="headline">结案详情</text>
+    <text class="content">{{lost.closed_explain}}</text>
+  </view>
+</view>

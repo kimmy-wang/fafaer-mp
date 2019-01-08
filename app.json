@@ -9,7 +9,9 @@
     "pages/gallery/gallery",
     "pages/gallery-detail/gallery-detail",
     "pages/more/more",
-    "pages/player/player"
+    "pages/player/player",
+    "pages/public-welfare/public-welfare",
+    "pages/public-welfare-detail/public-welfare-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

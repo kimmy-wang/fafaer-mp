@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "公益",
+  "usingComponents": {
+    "v-public-welfare": "/components/public-welfare/index",
+    "v-search": "/components/search/index"
+  }
+}

@@ -4,9 +4,8 @@ import {
   MORE_VIDEO,
   MORE_PHOTO,
   MORE_ADMIRATION,
+  MORE_PUBLIC_WELFARE,
   MORE_ABOUT,
-
-  MORE_SHOW_CONFIRM_ONCE,
 
   PAGE_SIZE
 } from '../utils/constants.js'
@@ -47,6 +46,12 @@ const settings = [
     },
     {
       id: 22,
+      title: "公益",
+      icon: "/images/more/gongyi.png",
+      type: MORE_PUBLIC_WELFARE
+    },
+    {
+      id: 23,
       title: "关于",
       icon: "/images/more/about@fill.png",
       type: MORE_ABOUT
@@ -80,8 +85,6 @@ const cacheActions = {
   },
 }
 
-
-
 const getCacheNum = type => {
   return _getValueFromCache(type) || PAGE_SIZE
 }
@@ -90,12 +93,12 @@ const setCacheNum = (type, value) => {
   _setValueToCache(type, value)
 }
 
-const getShowConfirmOnce = () => {
-  return _getValueFromCache(MORE_SHOW_CONFIRM_ONCE) || false
+const getShowConfirmOnce = (type) => {
+  return _getValueFromCache(type) || false
 }
 
-const setShowConfirmOnce = () => {
-  _setValueToCache(MORE_SHOW_CONFIRM_ONCE, true)
+const setShowConfirmOnce = (type) => {
+  _setValueToCache(type, true)
 }
 
 const _getValueFromCache = key => {

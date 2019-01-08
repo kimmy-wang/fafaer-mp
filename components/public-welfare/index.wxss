@@ -1,0 +1,87 @@
+/* components/public-welfare/index.wxss */
+
+.container {
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 310rpx;
+  height: 360rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+
+.container image {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.container .description-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  filter: opacity(0.6);
+}
+
+.container .closed-container {
+  width: 100%;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.closed-container .closed {
+  width: 100rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+
+.closed-container .closed text {
+  height: 40rpx;
+  /* line-height: 40rpx; */
+  font-size: 28rpx;
+  color: white;
+}
+
+.container .description-container .description {
+  padding: 5rpx 10rpx 8rpx 15rpx;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.title {
+  margin-top: 10rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: black;
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 20rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.date {
+  font-size: 20rpx;
+  text-align: right;
+  color: #555;
+}
