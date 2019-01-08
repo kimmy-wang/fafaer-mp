@@ -1,4 +1,6 @@
 <!--components/public-welfare/index.wxml-->
+<wxs src="../../wxs/filters.wxs" module="filters" />
+
 <view bindtap="showDetail" class="container">
   <image lazy-load="{{true}}" src="{{publicWelfare.img}}" />
   <view class="closed-container" wx:if="{{publicWelfare.closed}}">
@@ -10,7 +12,7 @@
     <view class="description">
       <text class="title">{{publicWelfare.name}}</text>
       <text class="desc">{{publicWelfare.desc}}</text>
-      <text class="date">{{publicWelfare.lost_date}}</text>
+      <text class="date">{{filters.substring(filters.replace(publicWelfare.lost_date, 'T', ' '), 0, 16)}}</text>
     </view>
   </view>
 </view>

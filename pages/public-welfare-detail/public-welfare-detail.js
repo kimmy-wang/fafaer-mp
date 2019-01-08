@@ -29,7 +29,7 @@ Page({
     })
     wx.showLoading()
     getLostDetail(id).then(res => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         lost: res
       })

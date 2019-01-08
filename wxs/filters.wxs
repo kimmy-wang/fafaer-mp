@@ -4,6 +4,18 @@ var splice = function (str) {
   return str.substring(0, str.indexOf('?'))
 }
 
+var replace = function (str, reg, replacement) {
+  if (!str) return
+  return str.replace(reg, replacement)
+}
+
+var substring = function (str, start, length) {
+  if (!str) return
+  return str.substring(start, length)
+}
+
 module.exports = {
   splice: splice,
+  replace: replace,
+  substring: substring
 }

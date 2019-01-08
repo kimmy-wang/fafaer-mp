@@ -1,4 +1,6 @@
 <!--pages/public-welfare-detail/public-welfare-detail.wxml-->
+<wxs src="../../wxs/filters.wxs" module="filters" />
+
 <view class="container">
   <view class="head">
     <image bindtap="previewImage" src="{{lost.img}}" />
@@ -19,7 +21,7 @@
       <view class="vertical">
         <text>{{lost.age}}</text>
         <text>{{lost.gender === 'female' ? '女' : '男'}}</text>
-        <text>{{lost.lost_date}}</text>
+        <text>{{filters.substring(filters.replace(lost.lost_date, 'T', ' '), 0, 16)}}</text>
         <text>{{lost.lost_location}}</text>
         <text selectable>{{lost.weibo}}</text>
         <text class="closed">{{lost.closed ? '已结案' : '未结案'}}</text>
