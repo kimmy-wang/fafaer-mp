@@ -1,7 +1,7 @@
 // components/confirm/index.js
 import {
   getCacheNum,
-} from '../../utils/more.js'
+} from '../../utils/cache.js'
 
 import {
   PAGE_SIZE

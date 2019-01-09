@@ -5,9 +5,7 @@ import {
   MORE_PHOTO,
   MORE_ADMIRATION,
   MORE_PUBLIC_WELFARE,
-  MORE_ABOUT,
-
-  PAGE_SIZE
+  MORE_ABOUT
 } from '../utils/constants.js'
 
 const settings = [
@@ -59,62 +57,4 @@ const settings = [
   ]
 ]
 
-const cacheActions = {
-  [MORE_ARTICLE](that, value) {
-    that.setData({
-      articleNum: value
-    })
-  },
-
-  [MORE_MUSIC](that, value) {
-    that.setData({
-      musicNum: value
-    })
-  },
-
-  [MORE_VIDEO](that, value) {
-    that.setData({
-      videoNum: value
-    })
-  },
-
-  [MORE_PHOTO](that, value) {
-    that.setData({
-      photoNum: value
-    })
-  },
-}
-
-const getCacheNum = type => {
-  return _getValueFromCache(type) || PAGE_SIZE
-}
-
-const setCacheNum = (type, value) => {
-  _setValueToCache(type, value)
-}
-
-const getShowConfirmOnce = (type) => {
-  return _getValueFromCache(type) || false
-}
-
-const setShowConfirmOnce = (type) => {
-  _setValueToCache(type, true)
-}
-
-const _getValueFromCache = key => {
-  return wx.getStorageSync(key)
-}
-
-const _setValueToCache = (key, value) => {
-  wx.setStorageSync(key, value)
-}
-
-export {
-  settings,
-  cacheActions,
-  getCacheNum,
-  setCacheNum,
-
-  getShowConfirmOnce,
-  setShowConfirmOnce
-} 
+export default settings

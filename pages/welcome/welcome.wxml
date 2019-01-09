@@ -4,9 +4,16 @@
     <block wx:key="{{item.name}}" wx:for="{{banners}}">
       <swiper-item data-index="{{index}}" bindtap="onItemTap">
         <image src="{{item.image}}" />
+        <view wx:if="{{(index + 1) === banners.length}}" class="goto" bindtap="skipTap">
+          <text>开启</text>
+        </view>
       </swiper-item>
     </block>
   </swiper>
+
+  <view class="skip" bindtap="skipTap">
+    <text>跳过</text>
+  </view>
 
   <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
 </view>

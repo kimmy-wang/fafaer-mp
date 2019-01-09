@@ -1,13 +1,13 @@
 // pages/more/more.js
+import settings from '../../utils/more.js'
+
 import {
-  settings,
-  cacheActions,
   getCacheNum,
   setCacheNum,
 
   getShowConfirmOnce,
   setShowConfirmOnce
-} from '../../utils/more.js'
+} from '../../utils/cache.js'
 
 import {
   MORE_ARTICLE,
@@ -122,8 +122,6 @@ Page({
   onConfirm(e) {
     this._hideConfirmWindow()
     this._onConfirm(e)
-    // const { type } = this.data
-    // cacheActions[type](this, type);
   },
 
   _showConfirmWindow() {

@@ -19,7 +19,7 @@ import {
 
 import {
   getCacheNum
-} from '../../utils/more.js'
+} from '../../utils/cache.js'
 
 const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_VIDEO)

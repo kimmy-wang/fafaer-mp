@@ -11,7 +11,7 @@ import {
 import {
   getShowConfirmOnce,
   setShowConfirmOnce
-} from '../../utils/more.js'
+} from '../../utils/cache.js'
 
 import {
   HISTORY_SEARCH_PUBLIC_WELFARE,
@@ -27,7 +27,7 @@ import {
 
 import {
   getCacheNum
-} from '../../utils/more.js'
+} from '../../utils/cache.js'
 
 const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_PUBLIC_WELFARE)

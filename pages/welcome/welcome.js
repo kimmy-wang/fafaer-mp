@@ -1,7 +1,16 @@
 // pages/welcome/welcome.js
 import {
+  WELCOME_CACHE_DATA
+} from '../../utils/constants.js'
+
+import {
   getBannerList
 } from '../../models/welcome.js'
+
+import {
+  getValidDataFromCache,
+  setValidDataFromCache
+} from '../../utils/cache.js'
 
 import {
   handleError
@@ -21,29 +30,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this._showLoadingCenter()
-    getBannerList()
-      .then(res => {
-        this.setData({
-          banners: res
+    let banners = getValidDataFromCache(WELCOME_CACHE_DATA) 
+    !banners && function() {
+      this._showLoadingCenter()
+      getBannerList()
+        .then(res => {
+          this.setData({
+            banners: res
+          })
+          setValidDataFromCache(WELCOME_CACHE_DATA, res)
+          this._hideLoadingCenter()
         })
-        this._hideLoadingCenter()
-      }).catch(error => {
-        this._hideLoadingCenter()
-        handleError(error)
+        .catch(error => {
+          this._hideLoadingCenter()
+          handleError(error)
+        })
+    }.bind(this)()
+    banners && function() {
+      this.setData({
+        banners
       })
+    }.bind(this)()
   },
 
   onItemTap(e) {
     const {
       index
     } = e.currentTarget.dataset
-    const { banners } = this.data
+    const {
+      banners
+    } = this.data
     if ((index + 1) === banners.length) {
       wx.switchTab({
         url: '/pages/new/new',
       })
     }
+  },
+
+  skipTap() {
+    wx.switchTab({
+      url: '/pages/new/new',
+    })
   },
 
   _showLoadingCenter() {
