@@ -14,7 +14,8 @@ Page({
    */
   data: {
     id: '',
-    lost: {}
+    lost: {},
+    loadingCenter: false,
   },
 
   /**
@@ -27,18 +28,18 @@ Page({
     this.setData({
       id
     })
-    wx.showLoading()
+    this._showLoadingCenter()
     getLostDetail(id).then(res => {
-      // console.log(res)
       this.setData({
         lost: res
       })
+      const gender = res.gender === 'female' ? '女' : '男'
       wx.setNavigationBarTitle({
-        title: res.name
+        title: `${res.name}-${res.age}-${gender}` 
       })
-      wx.hideLoading()
+      this._hideLoadingCenter()
     }).catch(error => {
-      wx.hideLoading()
+      this._hideLoadingCenter()
       handleError(error)
     })
   },
@@ -80,10 +81,15 @@ Page({
     })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
+  _showLoadingCenter() {
+    this.setData({
+      loadingCenter: true
+    })
+  },
 
+  _hideLoadingCenter() {
+    this.setData({
+      loadingCenter: false
+    })
   }
 })

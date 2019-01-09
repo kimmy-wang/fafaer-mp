@@ -1,0 +1,12 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="container">
+  <swiper indicator-dots indicator-active-color="#00ff00">
+    <block wx:key="{{item.name}}" wx:for="{{banners}}">
+      <swiper-item data-index="{{index}}" bindtap="onItemTap">
+        <image src="{{item.image}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
+</view>

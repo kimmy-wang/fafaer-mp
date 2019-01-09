@@ -1,8 +1,11 @@
 /* pages/public-welfare-detail/public-welfare-detail.wxss */
 
 .container {
-  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  background-color: #f5f5f5;
 }
 
 .head {
@@ -12,6 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .head image {
@@ -71,4 +75,10 @@
 .content {
   font-weight: 500;
   text-indent: 64rpx;
+}
+
+.loading-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/welcome/welcome",
     "pages/new/new",
     "pages/new-detail/new-detail",
     "pages/music/music",
