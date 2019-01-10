@@ -8,10 +8,13 @@
   </view>
   <view class="video-collections-container">
     <block wx:key="{{item.id}}" wx:for="{{dataArray}}">
-      <v-video-collection video-collection="{{item}}" class="video-collection" />
+      <v-video-collection wx:if="{{!item.type}}" video-collection="{{item}}" class="video-collection" />
+      <view class="video-collection" wx:if="{{item.type === 'ad'}}">
+        <ad data-index="{{index}}" unit-id="adunit-c965df726af2fe15" binderror="hideAd"></ad>
+      </view>
     </block>
   </view>
-  
+
   <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到视频集</text>
@@ -20,7 +23,10 @@
 <v-search wx:else more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="video-collections-container">
     <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
-      <v-video-collection video-collection="{{item}}" class="video-collection" />
+      <v-video-collection wx:if="{{!item.type}}" video-collection="{{item}}" class="video-collection" />
+      <view class="video-collection" wx:if="{{item.type === 'ad'}}">
+        <ad data-index="{{index}}" unit-id="adunit-c965df726af2fe15" binderror="hideSearchAd"></ad>
+      </view>
     </block>
   </view>
 </v-search>

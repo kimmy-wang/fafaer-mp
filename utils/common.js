@@ -10,7 +10,7 @@ const random = n => {
 }
 
 const handleError = error => {
-  // console.log(error)
+  console.error(error)
   wx.showToast({
     title: '网络错误',
     icon: 'none'

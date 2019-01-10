@@ -8,10 +8,13 @@
   </view>
   <view class="albums-container">
     <block wx:key="{{item.id}}" wx:for="{{dataArray}}">
-      <v-album album="{{item}}" class="album" />
+      <v-album wx:if="{{!item.type}}" album="{{item}}" class="album" />
+      <view class="album" wx:if="{{item.type === 'ad'}}">
+        <ad data-index="{{index}}" unit-id="adunit-c965df726af2fe15" binderror="hideAd"></ad>
+      </view>
     </block>
   </view>
-  
+
   <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
   <v-loading class="loading" wx:if="{{loading}}" />
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到专辑 / 电台</text>
@@ -20,7 +23,10 @@
 <v-search wx:else more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="albums-container">
     <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
-      <v-album album="{{item}}" class="album" />
+      <v-album wx:if="{{!item.type}}" album="{{item}}" class="album" />
+      <view class="album" wx:if="{{item.type === 'ad'}}">
+        <ad data-index="{{index}}" unit-id="adunit-c965df726af2fe15" binderror="hideSearchAd"></ad>
+      </view>
     </block>
   </view>
 </v-search>

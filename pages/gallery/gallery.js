@@ -9,6 +9,10 @@ import {
 } from '../../utils/common.js'
 
 import {
+  randCeil,
+} from '../../utils/ads.js'
+
+import {
   Pagination
 } from '../../models/Pagination.js'
 
@@ -33,7 +37,8 @@ Page({
   data: {
     search: {
       searchDataArray: [],
-      searching: false
+      searching: false,
+      searchAds: 0,
     },
 
     dataArray: [],
@@ -45,7 +50,9 @@ Page({
     loadingCenter: false,
 
     searchUrl: 'photos/gallery?',
-    historySearchType: HISTORY_SEARCH_GALLERY
+    historySearchType: HISTORY_SEARCH_GALLERY,
+
+    ads: 0,
   },
 
   /**
@@ -81,7 +88,8 @@ Page({
     this.setData({
       search: {
         searchDataArray: [],
-        searching: false
+        searching: false,
+        searchAds: 0
       }
     })
   },
@@ -114,10 +122,16 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    const { searching } = this.data
     const more = random(16)
     this.setData({
       more
     })
+
+    // 针对搜索页面下拉刷新
+    if (searching) {
+      return
+    }
 
     if (this._getLoading()) {
       return
@@ -142,11 +156,34 @@ Page({
     })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  hideAd(e) {
+    const { index } = e.target.dataset
+    const { dataArray } = this.data
+    let tempArray = dataArray.slice()
+    tempArray[index] = {
+      ...tempArray[index],
+      type: 'none'
+    }
+    this.setData({
+      dataArray: tempArray
+    })
+  },
 
+  hideSearchAd(e) {
+    const { index } = e.target.dataset
+    const { search } = this.data
+    const { searchDataArray } = search
+    let tempArray = searchDataArray.slice()
+    tempArray[index] = {
+      ...tempArray[index],
+      type: 'none'
+    }
+    this.setData({
+      search: {
+        ...search,
+        searchDataArray: tempArray
+      }
+    })
   },
 
   initSearchData(e) {
@@ -158,26 +195,72 @@ Page({
   },
 
   _loadSearchData(e) {
-    const { data, searching } = e.detail
-    const searchDataArray = this.data.search.searchDataArray.concat(data)
+    const {
+      data,
+      searching
+    } = e.detail
+    const { searchDataArray } = this.data.search
+    let { searchAds } = this.data.search
+    const tempArray = searchDataArray.concat(data)
+
+    let tempAdArray = tempArray.slice()
+    let index = randCeil(searchDataArray.length, tempArray.length)
+    if (!searchDataArray.length && !index && data.length > 1) {
+      ++index
+    }
+    tempAdArray.splice(index, 0, {
+      type: 'ad'
+    })
+    ++searchAds
+
     this.setData({
       search: {
-        searchDataArray,
-        searching
+        searchDataArray: tempAdArray,
+        searching,
+        searchAds
       }
     })
   },
 
   _setRefreshData(dataArray) {
+    let tempAdArray = dataArray.slice()
+    let ads = 0
+    if (dataArray.length > 1) {
+      const index = randCeil(0, tempAdArray.length)
+      tempAdArray.splice(index, 0, {
+        type: 'ad'
+      })
+      ads = 1
+    }
     this.setData({
-      dataArray
+      dataArray: tempAdArray,
+      ads
     })
   },
 
-  _setMoreData(dataArray) {
-    const tempArray = this.data.dataArray.concat(dataArray)
+  _setMoreData(data) {
+    const {
+      dataArray
+    } = this.data
+    let {
+      ads
+    } = this.data
+    const tempArray = dataArray.concat(data)
+    let tempAdArray = tempArray.slice()
+    if (data.length > 1) {
+      let index = randCeil(dataArray.length, tempArray.length)
+      if (!dataArray.length && !index) {
+        ++index
+      }
+      tempAdArray.splice(index, 0, {
+        type: 'ad'
+      })
+      ++ads
+    }
+
     this.setData({
-      dataArray: tempArray
+      dataArray: tempAdArray,
+      ads,
     })
   },
 
@@ -189,7 +272,8 @@ Page({
   },
 
   _hasMoreData() {
-    return !(this.data.dataArray.length >= this.data.total)
+    const { dataArray, total, ads } = this.data
+    return !((dataArray.length - ads) >= total)
   },
 
   _getLoading(loading) {

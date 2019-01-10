@@ -8,7 +8,10 @@
   </view>
   <view class="articles-container">
     <block wx:key="id" wx:for="{{dataArray}}">
-      <v-article article="{{item}}" class="article" />
+      <v-article wx:if="{{!item.type}}" article="{{item}}" class="article" />
+      <view class="article" wx:if="{{item.type === 'ad'}}">
+        <ad data-index="{{index}}" unit-id="adunit-c965df726af2fe15" binderror="hideAd"></ad>
+      </view>
     </block>
   </view>
 
@@ -17,10 +20,13 @@
   <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到文章</text>
 </view>
 
-<v-search wx:else more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch" >
+<v-search wx:else more="{{more}}" history-search-type="{{historySearchType}}" search-url="{{searchUrl}}" bindinit="initSearchData" bindupdate="updateSearchData" bindclear="onClearSearch" bindcancel="onCancelSearch">
   <view slot="datas" wx:if="{{search.searching}}" class="articles-container">
     <block wx:for="{{search.searchDataArray}}" wx:key="{{item.id}}">
-      <v-article article="{{item}}" class="article" />
+      <v-article wx:if="{{!item.type}}" article="{{item}}" class="article" />
+      <view class="article" wx:if="{{item.type === 'ad'}}">
+        <ad data-index="{{index}}" unit-id="adunit-c965df726af2fe15" binderror="hideSearchAd"></ad>
+      </view>
     </block>
   </view>
 </v-search>
