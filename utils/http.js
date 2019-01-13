@@ -16,7 +16,14 @@ const _http = (url, resolve, reject, data = {}, method = 'GET') => {
     },
     method,
     success(res) {
-      resolve(res.data)
+      console.log(res)
+      const { data } = res
+      if (data.error) {
+        reject(data.error)
+      }
+      else {
+        resolve(data)
+      }
     },
     fail(error) {
       reject(error)

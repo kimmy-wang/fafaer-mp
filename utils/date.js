@@ -1,5 +1,5 @@
 const getCurrentTime = () => {
-  return new Date().getTime()
+  return Date.now()
 }
 
 export {
