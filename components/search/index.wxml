@@ -4,7 +4,8 @@
     <view class="search-container">
       <image class="search-img" src="images/search.png" />
       <input bindconfirm="onSearch" placeholder-class="in-bar" class="bar" value="{{inputValue}}" auto-focus="{{true}}" placeholder="{{placeholder}}" />
-      <image bindtap="onClear" class="cancel-img" src="images/cancel.png" />
+      <image wx:if="{{inputValue}}" bindtap="onClear" class="cancel-img" src="images/cancel.png" />
+      <view wx:else class="cancel-img"></view>
     </view>
     <view bindtap="onCancel" class="cancel">取消</view>
   </view>
