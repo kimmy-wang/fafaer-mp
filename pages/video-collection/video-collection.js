@@ -24,7 +24,7 @@ import {
 import {
   baseBeh,
   pageAdBeh
-} from '../behaviors/page-behaviors.js';
+} from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_VIDEO)
@@ -86,12 +86,11 @@ Component({
      */
     onReachBottom: function () {
       const { searching } = this.data
-      const more = random(16)
-      this.setData({
-        more
-      })
-
       if (searching) {
+        const more = random(16)
+        this.setData({
+          more
+        })
         return
       }
 

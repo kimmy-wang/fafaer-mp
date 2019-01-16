@@ -25,7 +25,7 @@ import {
 import {
   baseBeh,
   pageNotAdBeh
-} from '../behaviors/page-behaviors.js';
+} from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_MUSIC)
@@ -170,10 +170,14 @@ Component({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-      const more = random(16)
-      this.setData({
-        more
-      })
+      const { searching } = this.data
+      if (searching) {
+        const more = random(16)
+        this.setData({
+          more
+        })
+        return
+      }
 
       if (this._getLoading()) {
         return

@@ -24,7 +24,7 @@ import {
 import {
   baseBeh,
   pageAdBeh
-} from '../behaviors/page-behaviors.js';
+} from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_ARTICLE)
@@ -46,6 +46,7 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+      // this._toggleTabBar()
       this._showLoadingCenter()
       getArticles(1, pagination.getPageSize()).then(res => {
         this._setMoreData(res.results)
@@ -88,13 +89,12 @@ Component({
      */
     onReachBottom: function(e) {
       const { searching } = this.data
-      const more = random(16)
-      this.setData({
-        more
-      })
-
       // 针对搜索页面下拉刷新
       if (searching) {
+        const more = random(16)
+        this.setData({
+          more
+        })
         return
       }
 

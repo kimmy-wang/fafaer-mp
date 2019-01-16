@@ -24,7 +24,7 @@ import {
 import {
   baseBeh,
   pageNotAdBeh
-} from '../behaviors/page-behaviors.js';
+} from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
 const pageSize = getCacheNum(MORE_PHOTO)
@@ -97,13 +97,12 @@ Component({
      */
     onReachBottom: function () {
       const { searching } = this.data
-      const more = random(16)
-      this.setData({
-        more
-      })
-
       // 针对搜索页面下拉刷新
       if (searching) {
+        const more = random(16)
+        this.setData({
+          more
+        })
         return
       }
 

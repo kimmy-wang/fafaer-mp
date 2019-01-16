@@ -2,6 +2,11 @@ import {
   randCeil,
 } from '../../utils/ads.js'
 
+import {
+  tabBarList,
+  happyNewYearTabBarList
+} from '../../tab-bar.js'
+
 const baseBeh = Behavior({
   data: {
     search: {
@@ -17,6 +22,23 @@ const baseBeh = Behavior({
     loadingCenter: false,
   },
   methods: {
+    // onPageScroll(e) {
+    //   const { scrollTop } = e
+    //   if (scrollTop < 0) return
+    //   const preScrollTop = this.scrollTop || 0
+    //   const hideTabBar = this.hideTabBar
+    //   if (preScrollTop <= scrollTop) {
+    //     console.log(preScrollTop, scrollTop, hideTabBar)
+    //     wx.hideTabBar({ animation: true })
+    //     this.hideTabBar = true
+    //   } else if (preScrollTop > scrollTop) {
+    //     console.log(preScrollTop, scrollTop, hideTabBar)
+    //     wx.showTabBar({ animation: true })
+    //     this.hideTabBar = false
+    //   }
+    //   this.scrollTop = scrollTop
+    // },
+
     onSearching() {
       this.setData({
         searching: true
@@ -64,6 +86,47 @@ const baseBeh = Behavior({
     _hideLoadingCenter() {
       this.setData({
         loadingCenter: false
+      })
+    },
+
+    _toggleTabBar() {
+      const preDate = new Date(2018, 2, 1, 0, 0, 0)
+      const nextDate = new Date(2019, 2, 11, 0, 0, 0)
+      const currentDateTime = Date.now()
+
+      let tabList = tabBarList
+      let style = {
+        color: '#888888',
+        selectedColor: '#09BB07',
+        backgroundColor: '#FFFFFF',
+      }
+      if (currentDateTime >= preDate.getTime() && currentDateTime < nextDate) {
+        style = {
+          color: '#FF0000',
+          selectedColor: '#00FF00',
+          backgroundColor: '#FFFFFF',
+          borderStyle: 'white'
+        }
+        tabList = happyNewYearTabBarList
+      } else {
+        style = {
+          color: '#888888',
+          selectedColor: '#09BB07',
+          backgroundColor: '#FFFFFF',
+        }
+        tabList = tabBarList
+      }
+
+      wx.setTabBarStyle(style)
+
+      const length = tabList.length
+      length && tabList.forEach((item, index) => {
+        wx.setTabBarItem({
+          index: index,
+          text: item.text,
+          iconPath: item.iconPath,
+          selectedIconPath: item.selectedIconPath
+        })
       })
     }
   }
