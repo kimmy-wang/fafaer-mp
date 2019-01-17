@@ -55,18 +55,18 @@ Page({
       photoNum
     })
 
-    const showConfirmOnce = getShowConfirmOnce(MORE_SHOW_CONFIRM_ONCE)
-    !showConfirmOnce && wx.showModal({
-      title: "提示",
-      content: "分页设置: 每页加载数量",
-      showCancel: false,
-      confirmText: "朕已阅",
-      success(res) {
-        if (res.confirm) {
-          setShowConfirmOnce(MORE_SHOW_CONFIRM_ONCE)
-        }
-      }
-    })
+    // const showConfirmOnce = getShowConfirmOnce(MORE_SHOW_CONFIRM_ONCE)
+    // !showConfirmOnce && wx.showModal({
+    //   title: "提示",
+    //   content: "分页设置: 每页加载数量",
+    //   showCancel: false,
+    //   confirmText: "朕已阅",
+    //   success(res) {
+    //     if (res.confirm) {
+    //       setShowConfirmOnce(MORE_SHOW_CONFIRM_ONCE)
+    //     }
+    //   }
+    // })
   },
 
   /**
@@ -96,9 +96,11 @@ Page({
     }
 
     if (type === MORE_ABOUT) {
-      wx.showToast({
-        title: '别点了, 啥也没有',
-        icon: 'none'
+      wx.showModal({
+        title: '版本',
+        content: '1.3.3',
+        showCancel: false,
+        confirmText: '知道了'
       })
       return
     }

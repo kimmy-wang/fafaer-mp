@@ -1,8 +1,9 @@
 <!--pages/more/more.wxml-->
 <view class="container">
-  <block wx:for="{{settings}}" wx:key="*this" wx:for-item="parent">
+  <block wx:for="{{settings}}" wx:key="{{parent.id}}" wx:for-item="parent">
+    <text class="title">{{parent.title}}</text>
     <view class="sub-sontainer">
-      <block wx:for="{{parent}}" wx:key="{{item.id}}">
+      <block wx:for="{{parent.list}}" wx:key="{{item.id}}">
         <v-more bindclick="onItemClick" item="{{item}}" class="more">
           <view slot="content" class="content-container">
             <image src="{{item.icon}}" />
