@@ -98,7 +98,7 @@ Page({
     if (type === MORE_ABOUT) {
       wx.showModal({
         title: '版本',
-        content: '1.3.3',
+        content: '1.3.4',
         showCancel: false,
         confirmText: '知道了'
       })

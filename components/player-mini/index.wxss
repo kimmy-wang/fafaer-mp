@@ -37,9 +37,15 @@
 }
 
 .slider-container slider {
-  width: 100%;
+  width: 520rpx;
   margin: 0;
   padding: 0;
+}
+
+.slider-container text {
+  width: 80rpx;
+  margin-left: 10rpx;
+  color: #777
 }
 
 .wrapper {

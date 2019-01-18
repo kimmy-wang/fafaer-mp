@@ -1,11 +1,14 @@
 <!--components/player-mini/index.wxml-->
+<wxs src="../../wxs/filters.wxs" module="filters" />
+
 <view class="container">
   <view class="img-container">
     <image src="{{coverImg}}" />
   </view>
   <view class="sub-container">
     <view class="slider-container">
-      <slider bindchange="onChange" block-size="12" min="0" max="{{duration}}" value="{{currentTime}}" show-value/>
+      <slider bindchange="onChange" block-size="12" min="0" max="{{duration}}" value="{{currentTime}}" />
+      <text>{{filters.toString(currentTime)}}</text>
     </view>
     <view class="wrapper">
       <view class="content-container">

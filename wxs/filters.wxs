@@ -14,8 +14,19 @@ var substring = function (str, start, length) {
   return str.substring(start, length)
 }
 
+var toString = function (seconds) {
+  if (!seconds) return
+  var minutes = parseInt(seconds / 60)
+  var secondss = seconds % 60
+  if (secondss < 10) {
+    secondss = '0' + secondss
+  }
+  return minutes + ':' + secondss
+}
+
 module.exports = {
   splice: splice,
   replace: replace,
-  substring: substring
+  substring: substring,
+  toString: toString
 }
