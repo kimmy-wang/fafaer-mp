@@ -14,7 +14,7 @@ import {
 
 import {
   HISTORY_SEARCH_VIDEO_COLLECTION_VIDEO,
-  MORE_VIDEO
+  USER_VIDEO
 } from "../../utils/constants.js"
 
 import {
@@ -27,7 +27,7 @@ import {
 } from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
-const pageSize = getCacheNum(MORE_VIDEO)
+const pageSize = getCacheNum(USER_VIDEO)
 pagination.setPageSize(pageSize)
 
 Component({
@@ -76,7 +76,7 @@ Component({
         wx.stopPullDownRefresh()
         return
       }
-      const pageSize = getCacheNum(MORE_VIDEO)
+      const pageSize = getCacheNum(USER_VIDEO)
       pagination.setPageSize(pageSize)
       const { videoCollectionId } = this.data
       wx.showNavigationBarLoading()

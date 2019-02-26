@@ -1,4 +1,4 @@
-/* pages/public-welfare-detail/public-welfare-detail.wxss */
+/* pages/user-public-welfare-detail/user-public-welfare-detail.wxss */
 
 .container {
   display: flex;

@@ -1,4 +1,5 @@
 // pages/music-detail/music-detail.js
+const app = getApp()
 import {
   getAlbumDetail,
   getSongListByAlbumId
@@ -15,7 +16,7 @@ import {
 
 import {
   HISTORY_SEARCH_MUSIC_SONG,
-  MORE_MUSIC
+  USER_MUSIC
 } from '../../utils/constants.js'
 
 import {
@@ -28,7 +29,7 @@ import {
 } from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
-const pageSize = getCacheNum(MORE_MUSIC)
+const pageSize = getCacheNum(USER_MUSIC)
 pagination.setPageSize(pageSize)
 
 const mMgr = wx.getBackgroundAudioManager()
@@ -54,7 +55,7 @@ Component({
     headerPosition: 'none',
     headerTop: 0,
     marginTop: 0,
-    windowWidth: 0
+    windowWidth: 0,
   },
 
   methods: {
@@ -62,6 +63,13 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      const { playing, currentSong, currentSongIndex, duration } = app.globalData
+      this.setData({
+        playing,
+        currentSong,
+        currentSongIndex,
+        duration,
+      })
       const windowWidth = wx.getSystemInfoSync().windowWidth
       const { id, name } = options
       wx.setNavigationBarTitle({
@@ -145,7 +153,7 @@ Component({
         wx.stopPullDownRefresh()
         return
       }
-      const pageSize = getCacheNum(MORE_MUSIC)
+      const pageSize = getCacheNum(USER_MUSIC)
       pagination.setPageSize(pageSize)
       const { albumId } = this.data
       wx.showNavigationBarLoading()
@@ -207,12 +215,29 @@ Component({
      */
     onSongClick(e) {
       const { song, index } = e.detail
+      const { currentSong, playing } = this.data
+      if (currentSong && currentSong.file === song.file) {
+        playing && mMgr && mMgr.pause()
+        !playing && mMgr && mMgr.play()
+        this.setData({
+          playing: !playing
+        })
+        app.globalData.playing = !playing
+        return;
+      }
       // console.log(index)
       this.setData({
         currentSong: song,
         currentSongIndex: index,
       })
+      app.globalData.currentSong = song
+      app.globalData.currentSongIndex = index
+      this.triggerPlayer()
       this._onPlayMiniClick()
+    },
+
+    triggerPlayer(e) {
+      this._triggerPlayer()
     },
 
     /**
@@ -232,6 +257,8 @@ Component({
           currentSong: dataArray[0].song,
           currentSongIndex: 0,
         })
+        app.globalData.currentSong = dataArray[0].song
+        app.globalData.currentSongIndex = 0
       }
       this._onPlayMiniClick()
     },
@@ -253,6 +280,8 @@ Component({
           currentSong: dataArray[0].song,
           currentSongIndex: 0,
         })
+        app.globalData.currentSong = dataArray[0].song
+        app.globalData.currentSongIndex = 0
       } else {
         if ((currentSongIndex + 1) === dataArray.length) {
           wx.showToast({
@@ -265,6 +294,8 @@ Component({
           currentSong: dataArray[currentSongIndex + 1].song,
           currentSongIndex: currentSongIndex + 1,
         })
+        app.globalData.currentSong = dataArray[currentSongIndex + 1].song
+        app.globalData.currentSongIndex = currentSongIndex + 1
       }
       this._onPlayMiniClick()
     },
@@ -276,6 +307,7 @@ Component({
         this.setData({
           playing: true
         })
+        app.globalData.playing = true
         mMgr.title = currentSong.name
         mMgr.src = currentSong.file
       }
@@ -283,6 +315,7 @@ Component({
         this.setData({
           playing: false
         })
+        app.globalData.playing = false
         mMgr.pause()
       }
     },
@@ -296,6 +329,7 @@ Component({
         this.setData({
           playing: false
         })
+        app.globalData.playing = false
         return
       }
 
@@ -303,7 +337,15 @@ Component({
         this.setData({
           playing: true
         })
+        app.globalData.playing = true
       }
+    },
+
+    _triggerPlayer() {
+      const { currentSong } = this.data
+      currentSong && wx.navigateTo({
+        url: `/pages/playing-song-detail/playing-song-detail?songId=${currentSong.id}`,
+      })
     },
 
     _switchMusic() {
@@ -315,10 +357,13 @@ Component({
       mMgr.onTimeUpdate(() => {
         // console.log("onTimeUpdate", Math.ceil(mMgr.currentTime))
         // console.log("onTimeUpdateduration", Math.ceil(mMgr.duration))
+        let currentTime = Math.ceil(mMgr.currentTime)
+        let duration = Math.ceil(mMgr.duration)
         this.setData({
-          currentTime: Math.ceil(mMgr.currentTime),
-          duration: Math.ceil(mMgr.duration)
+          currentTime,
+          duration
         })
+        app.globalData.duration = duration
       })
       mMgr.onPlay(e => {
         this._recoverStatus()

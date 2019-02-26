@@ -9,10 +9,12 @@
     "pages/video-collection-detail/video-collection-detail",
     "pages/gallery/gallery",
     "pages/gallery-detail/gallery-detail",
-    "pages/more/more",
+    "pages/user/user",
     "pages/player/player",
-    "pages/public-welfare/public-welfare",
-    "pages/public-welfare-detail/public-welfare-detail"
+    "pages/user-public-welfare/user-public-welfare",
+    "pages/user-public-welfare-detail/user-public-welfare-detail",
+    "pages/playing-song-detail/playing-song-detail",
+    "pages/user-cover/user-cover"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -51,10 +53,10 @@
         "selectedIconPath": "/images/tab/photo@selected.png"
       },
       {
-        "pagePath": "pages/more/more",
-        "text": "设置",
-        "iconPath": "/images/tab/setting.png",
-        "selectedIconPath": "/images/tab/setting@selected.png"
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/tab/user.png",
+        "selectedIconPath": "/images/tab/user@selected.png"
       }
     ]
   },

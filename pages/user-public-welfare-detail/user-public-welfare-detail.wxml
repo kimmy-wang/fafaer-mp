@@ -1,4 +1,4 @@
-<!--pages/public-welfare-detail/public-welfare-detail.wxml-->
+<!--pages/user-public-welfare-detail/user-public-welfare-detail.wxml-->
 <wxs src="../../wxs/filters.wxs" module="filters" />
 
 <view class="container">
@@ -38,6 +38,6 @@
     <text class="headline">结案详情</text>
     <text class="content">{{lost.closed_explain}}</text>
   </view>
-  
+
   <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
 </view>

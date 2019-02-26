@@ -14,7 +14,7 @@ import {
 
 import {
   HISTORY_SEARCH_ARTICLE,
-  MORE_ARTICLE
+  USER_ARTICLE
 } from '../../utils/constants.js'
 
 import {
@@ -27,7 +27,7 @@ import {
 } from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
-const pageSize = getCacheNum(MORE_ARTICLE)
+const pageSize = getCacheNum(USER_ARTICLE)
 pagination.setPageSize(pageSize)
 
 Component({
@@ -69,7 +69,7 @@ Component({
         wx.stopPullDownRefresh()
         return
       }
-      const pageSize = getCacheNum(MORE_ARTICLE)
+      const pageSize = getCacheNum(USER_ARTICLE)
       pagination.setPageSize(pageSize)
       wx.showNavigationBarLoading()
       getArticles(1, pagination.getPageSize()).then(res => {

@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "设置",
+  "navigationBarTitleText": "我的",
   "usingComponents": {
-    "v-more": "/components/more/index",
+    "v-user": "/components/user/index",
     "v-mask": "/components/mask/index",
     "v-confirm": "/components/confirm/index"
   },

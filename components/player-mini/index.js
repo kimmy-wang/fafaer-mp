@@ -23,7 +23,7 @@ Component({
    */
   methods: {
     onPlayTap() {
-      this.triggerEvent("click", {}, {})
+      this.triggerEvent("play", {}, {})
     },
     onNextTap() {
       this.triggerEvent("next", {}, {})

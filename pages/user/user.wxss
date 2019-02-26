@@ -3,11 +3,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5e5;
+  background-color: #f7f7f7;
 }
 
 .container > .title {
-  background-color: #e5e5e5;
+  background-color: #f7f7f7;
   margin: 10rpx 0 4rpx 10rpx;
   color: #555;
   font-size: 28rpx;

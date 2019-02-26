@@ -14,7 +14,7 @@ import {
 
 import {
   HISTORY_SEARCH_GALLERY_PHOTO,
-  MORE_PHOTO
+  USER_PHOTO
 } from '../../utils/constants.js'
 
 import {
@@ -27,7 +27,7 @@ import {
 } from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
-const pageSize = getCacheNum(MORE_PHOTO)
+const pageSize = getCacheNum(USER_PHOTO)
 pagination.setPageSize(pageSize)
 
 Component({
@@ -76,7 +76,7 @@ Component({
         wx.stopPullDownRefresh()
         return
       }
-      const pageSize = getCacheNum(MORE_PHOTO)
+      const pageSize = getCacheNum(USER_PHOTO)
       pagination.setPageSize(pageSize)
       const { galleryId } = this.data
       wx.showNavigationBarLoading()

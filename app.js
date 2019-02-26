@@ -33,6 +33,11 @@ App({
     userInfo: null,
     videoContext: null,
     videoPlaying: false,
-    videoId: ''
+    videoId: '',
+
+    playing: false,
+    currentSong: null,
+    currentSongIndex: -1,
+    duration: 0,
   }
 })

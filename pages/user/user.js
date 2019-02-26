@@ -1,5 +1,5 @@
-// pages/more/more.js
-import settings from '../../utils/more.js'
+// pages/user/user.js
+import settings from '../../utils/user.js'
 
 import {
   getCacheNum,
@@ -10,14 +10,16 @@ import {
 } from '../../utils/cache.js'
 
 import {
-  MORE_ARTICLE,
-  MORE_MUSIC,
-  MORE_VIDEO,
-  MORE_PHOTO,
-  MORE_ADMIRATION,
-  MORE_PUBLIC_WELFARE,
-  MORE_ABOUT,
-  MORE_SHOW_CONFIRM_ONCE,
+  USER_ARTICLE,
+  USER_MUSIC,
+  USER_VIDEO,
+  USER_PHOTO,
+  USER_ADMIRATION,
+  USER_PUBLIC_WELFARE,
+  USER_MINI_PROGRAM_COVER,
+  USER_CLEAR_STORAGE,
+  USER_ABOUT,
+  USER_SHOW_CONFIRM_ONCE,
 
   PAGE_SIZE
 } from '../../utils/constants.js'
@@ -44,10 +46,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const articleNum = getCacheNum(MORE_ARTICLE)
-    const musicNum = getCacheNum(MORE_MUSIC)
-    const videoNum = getCacheNum(MORE_VIDEO)
-    const photoNum = getCacheNum(MORE_PHOTO)
+    const articleNum = getCacheNum(USER_ARTICLE)
+    const musicNum = getCacheNum(USER_MUSIC)
+    const videoNum = getCacheNum(USER_VIDEO)
+    const photoNum = getCacheNum(USER_PHOTO)
     this.setData({
       articleNum,
       musicNum,
@@ -81,21 +83,47 @@ Page({
       type,
       title
     } = e.detail
-    if (type === MORE_ADMIRATION) {
+    if (type === USER_ADMIRATION) {
       wx.previewImage({
         urls: ['https://dev.cdn.chenyifaer.com/admiration.png']
       })
       return
     }
 
-    if (type === MORE_PUBLIC_WELFARE) {
+    if (type === USER_PUBLIC_WELFARE) {
       wx.navigateTo({
-        url: '/pages/public-welfare/public-welfare',
+        url: '/pages/user-public-welfare/user-public-welfare',
       })
       return
     }
 
-    if (type === MORE_ABOUT) {
+    if (type === USER_MINI_PROGRAM_COVER) {
+      wx.navigateTo({
+        url: '/pages/user-cover/user-cover',
+      })
+      return
+    }
+
+    if (type === USER_CLEAR_STORAGE) {
+      wx.clearStorage({
+        success() {
+          wx.showToast({
+            title: '清除成功',
+            mask: true
+          })
+        },
+        fail() {
+          wx.showToast({
+            title: '清除失败',
+            icon: 'none',
+            mask: true
+          })
+        }
+      })
+      return
+    }
+
+    if (type === USER_ABOUT) {
       wx.showModal({
         title: '版本',
         content: '1.3.4',
@@ -142,22 +170,22 @@ Page({
     const {type, value} = e.detail
     setCacheNum(type, value)
     switch (type) {
-      case MORE_ARTICLE:
+      case USER_ARTICLE:
         this.setData({
           articleNum: value
         })
         break
-      case MORE_MUSIC:
+      case USER_MUSIC:
         this.setData({
           musicNum: value
         })
         break
-      case MORE_VIDEO:
+      case USER_VIDEO:
         this.setData({
           videoNum: value
         })
         break
-      case MORE_PHOTO:
+      case USER_PHOTO:
         this.setData({
           photoNum: value
         })

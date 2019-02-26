@@ -1,4 +1,4 @@
-<!--pages/public-welfare/public-welfare.wxml-->
+<!--pages/user-public-welfare/user-public-welfare.wxml-->
 <view wx:if="{{!searching}}" class="container">
   <view class="search-container">
     <view bindtap="onSearching" class="search-box">

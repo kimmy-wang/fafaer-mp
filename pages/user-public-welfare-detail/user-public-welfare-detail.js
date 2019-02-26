@@ -1,4 +1,4 @@
-// pages/public-welfare-detail/public-welfare-detail.js
+// pages/user-public-welfare-detail/user-public-welfare-detail.js
 import {
   getLostDetail
 } from '../../models/public-welfare.js'
@@ -35,7 +35,7 @@ Page({
       })
       const gender = res.gender === 'female' ? '女' : '男'
       wx.setNavigationBarTitle({
-        title: `${res.name}-${res.age}-${gender}` 
+        title: `${res.name}-${res.age}-${gender}`
       })
       this._hideLoadingCenter()
     }).catch(error => {

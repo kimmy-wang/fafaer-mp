@@ -14,7 +14,7 @@ import {
 
 import {
   HISTORY_SEARCH_MUSIC,
-  MORE_MUSIC
+  USER_MUSIC
 } from "../../utils/constants.js"
 
 import {
@@ -27,7 +27,7 @@ import {
 } from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
-const pageSize = getCacheNum(MORE_MUSIC)
+const pageSize = getCacheNum(USER_MUSIC)
 pagination.setPageSize(pageSize)
 
 Component({
@@ -67,7 +67,7 @@ Component({
         wx.stopPullDownRefresh()
         return
       }
-      const pageSize = getCacheNum(MORE_MUSIC)
+      const pageSize = getCacheNum(USER_MUSIC)
       pagination.setPageSize(pageSize)
       wx.showNavigationBarLoading()
       getAlbumList(1, pagination.getPageSize()).then(res => {

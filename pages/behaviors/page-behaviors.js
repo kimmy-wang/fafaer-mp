@@ -90,7 +90,7 @@ const baseBeh = Behavior({
     },
 
     _toggleTabBar() {
-      const preDate = new Date(2018, 2, 1, 0, 0, 0)
+      const preDate = new Date(2019, 2, 1, 0, 0, 0)
       const nextDate = new Date(2019, 2, 11, 0, 0, 0)
       const currentDateTime = Date.now()
 

@@ -1,4 +1,4 @@
-// pages/public-welfare/public-welfare.js
+// pages/user-public-welfare/user-public-welfare.js
 import {
   getLostList
 } from '../../models/public-welfare.js'
@@ -15,8 +15,8 @@ import {
 
 import {
   HISTORY_SEARCH_PUBLIC_WELFARE,
-  MORE_PUBLIC_WELFARE,
-  MORE_SHOW_PUBLIC_WELFARE_ONCE,
+  USER_PUBLIC_WELFARE,
+  USER_SHOW_PUBLIC_WELFARE_ONCE,
 } from '../../utils/constants.js'
 
 import {
@@ -33,7 +33,7 @@ import {
 } from '../behaviors/page-behaviors.js'
 
 const pagination = new Pagination()
-const pageSize = getCacheNum(MORE_PUBLIC_WELFARE)
+const pageSize = getCacheNum(USER_PUBLIC_WELFARE)
 pagination.setPageSize(pageSize)
 
 Component({
@@ -62,7 +62,7 @@ Component({
         handleError(error)
       })
 
-      const showConfirmOnce = getShowConfirmOnce(MORE_SHOW_PUBLIC_WELFARE_ONCE)
+      const showConfirmOnce = getShowConfirmOnce(USER_SHOW_PUBLIC_WELFARE_ONCE)
       !showConfirmOnce && wx.showModal({
         title: "提示",
         content: "每个人都是走失孩子回家路上的一盏灯, 汇聚成为连接孩子与父母间的光明大道",
@@ -70,7 +70,7 @@ Component({
         confirmText: "赞👍",
         success(res) {
           if (res.confirm) {
-            setShowConfirmOnce(MORE_SHOW_PUBLIC_WELFARE_ONCE)
+            setShowConfirmOnce(USER_SHOW_PUBLIC_WELFARE_ONCE)
           }
         }
       })
@@ -81,7 +81,7 @@ Component({
         id
       } = e.detail
       wx.navigateTo({
-        url: `/pages/public-welfare-detail/public-welfare-detail?id=${id}`,
+        url: `/pages/user-public-welfare-detail/user-public-welfare-detail?id=${id}`,
       })
     },
 
@@ -96,7 +96,7 @@ Component({
         wx.stopPullDownRefresh()
         return
       }
-      const pageSize = getCacheNum(MORE_PUBLIC_WELFARE)
+      const pageSize = getCacheNum(USER_PUBLIC_WELFARE)
       pagination.setPageSize(pageSize)
       wx.showNavigationBarLoading()
       getLostList(1, pagination.getPageSize()).then(res => {

@@ -34,7 +34,7 @@
   <view class="songs-wrapper margin-bottom" style="margin-top:{{marginTop}}rpx;">
     <view class="songs-container">
       <block wx:key="{{item.song.id}}" wx:for="{{dataArray}}">
-        <v-song bindclick="onSongClick" index="{{index}}" song="{{item.song}}" class="song" />
+        <v-song bindclick="onSongClick" index="{{index}}" song="{{item.song}}" class="song {{item.song.id === currentSong.id ? (playing ? 'playing' : 'paused') : ''}}" />
       </block>
     </view>
   </view>
@@ -56,7 +56,7 @@
   <v-player class="player" wx:if="{{!fullScreen}}" />
 </view> -->
 
-<view class="player-mini-container">
-  <v-player-mini cover-img="{{album.cover_img}}" song="{{currentSong}}" playing="{{playing}}" 
-  duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindclick="onPlayMiniClick" bindnext="onNextMiniClick" />
+<view class="player-mini-container" bindtap='triggerPlayer'>
+  <v-player-mini cover-img="{{album.cover_img}}" song="{{currentSong}}" playing="{{playing}}"
+  duration="{{duration}}" current-time="{{currentTime}}" class="player-mini" bindplay="onPlayMiniClick" bindnext="onNextMiniClick" />
 </view>

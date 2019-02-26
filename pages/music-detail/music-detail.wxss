@@ -180,6 +180,14 @@
   border-bottom: none;
 }
 
+.playing {
+  background-color: #f0fcff;
+}
+
+.paused {
+  background-color: #fffbf0
+}
+
 .loading-center {
   position: absolute;
   top: 50%;

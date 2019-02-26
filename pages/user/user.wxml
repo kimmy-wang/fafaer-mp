@@ -1,0 +1,27 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <block wx:for="{{settings}}" wx:key="{{parent.id}}" wx:for-item="parent">
+    <text class="title">{{parent.title}}</text>
+    <view class="sub-sontainer">
+      <block wx:for="{{parent.list}}" wx:key="{{item.id}}">
+        <v-user bindclick="onItemClick" item="{{item}}" class="more">
+          <view slot="content" class="content-container">
+            <image src="{{item.icon}}" />
+            <text>{{item.title}}</text>
+          </view>
+          <view slot="num" class="num-container">
+            <text wx:if="{{item.type === 'USER_ARTICLE'}}">{{articleNum}}</text>
+            <text wx:elif="{{item.type === 'USER_MUSIC'}}">{{musicNum}}</text>
+            <text wx:elif="{{item.type === 'USER_VIDEO'}}">{{videoNum}}</text>
+            <text wx:elif="{{item.type === 'USER_PHOTO'}}">{{photoNum}}</text>
+            <image wx:else src="/images/user/right.png" />
+          </view>
+        </v-user>
+      </block>
+    </view>
+  </block>
+</view>
+
+<v-mask bindclick="onMaskClick" wx:if="{{showConfirmWindow}}" />
+
+<v-confirm wx:if="{{showConfirmWindow}}" type="{{type}}" min="{{min}}" max="{{max}}" title="{{title}}" bindcancel="onCancel" bindconfirm="onConfirm" />

@@ -1,4 +1,4 @@
-/* pages/public-welfare/public-welfare.wxss */
+/* pages/user-public-welfare/user-public-welfare.wxss */
 .container {
   display: flex;
   flex-direction: column;
