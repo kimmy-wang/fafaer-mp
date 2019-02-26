@@ -232,7 +232,7 @@ Component({
       })
       app.globalData.currentSong = song
       app.globalData.currentSongIndex = index
-      this.triggerPlayer()
+      // this._triggerPlayer()
       this._onPlayMiniClick()
     },
 

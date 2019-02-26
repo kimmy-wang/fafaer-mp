@@ -1,0 +1,11 @@
+<!--pages/user-about/user-about.wxml-->
+<view class="container">
+  <block wx:for="{{versions}}" wx:key="{{item.version}}">
+    <view class="sub-container">
+      <text class="headline">{{item.version}}</text>
+      <block wx:for="{{item.updates}}" wx:for-item="update" wx:key="{{update}}">
+        <text decode='{{true}}' class="content">{{update}}</text>
+      </block>
+    </view>
+  </block>
+</view>

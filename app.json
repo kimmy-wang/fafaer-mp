@@ -14,7 +14,8 @@
     "pages/user-public-welfare/user-public-welfare",
     "pages/user-public-welfare-detail/user-public-welfare-detail",
     "pages/playing-song-detail/playing-song-detail",
-    "pages/user-cover/user-cover"
+    "pages/user-cover/user-cover",
+    "pages/user-about/user-about"
   ],
   "window": {
     "backgroundTextStyle": "light",

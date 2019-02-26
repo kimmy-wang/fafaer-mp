@@ -1,6 +1,8 @@
 // pages/user/user.js
 import settings from '../../utils/user.js'
 
+import versions from '../../versions.js'
+
 import {
   getCacheNum,
   setCacheNum,
@@ -143,9 +145,14 @@ Page({
     if (type === USER_ABOUT) {
       wx.showModal({
         title: '版本',
-        content: '1.3.4',
-        showCancel: false,
-        confirmText: '知道了'
+        content: versions[0].version,
+        cancelText: '更新记录',
+        confirmText: '朕已阅',
+        success(res) {
+          !res.confirm && wx.navigateTo({
+            url: '/pages/user-about/user-about'
+          })
+        }
       })
       return
     }
