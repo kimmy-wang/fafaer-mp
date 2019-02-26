@@ -10,7 +10,8 @@ import {
 
 import {
   getShowConfirmOnce,
-  setShowConfirmOnce
+  setShowConfirmOnce,
+  getCacheNum
 } from '../../utils/cache.js'
 
 import {
@@ -22,10 +23,6 @@ import {
 import {
   Pagination
 } from '../../models/Pagination.js'
-
-import {
-  getCacheNum
-} from '../../utils/cache.js'
 
 import {
   baseBeh,

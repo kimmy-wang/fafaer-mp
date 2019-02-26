@@ -20,9 +20,9 @@ const tabBarList = [
     "selectedIconPath": "/images/tab/photo@selected.png"
   },
   {
-    "text": "设置",
-    "iconPath": "/images/tab/setting.png",
-    "selectedIconPath": "/images/tab/setting@selected.png"
+    "text": "我的",
+    "iconPath": "/images/tab/user.png",
+    "selectedIconPath": "/images/tab/user@selected.png"
   }
 ]
 
@@ -48,9 +48,9 @@ const happyNewYearTabBarList = [
     "selectedIconPath": "/images/tab/photo@selected.png"
   },
   {
-    "text": "设置",
-    "iconPath": "/images/tab/setting.png",
-    "selectedIconPath": "/images/tab/setting@selected.png"
+    "text": "我的",
+    "iconPath": "/images/tab/user.png",
+    "selectedIconPath": "/images/tab/user@selected.png"
   }
 ]
 

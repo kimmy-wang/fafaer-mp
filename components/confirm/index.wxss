@@ -1,9 +1,9 @@
 /* components/confirm/index.wxss */
 .setting-container {
-  width: 90%;
+  width: 84%;
   height: 360rpx;
   position: fixed;
-  left: 3%;
+  left: 6%;
   top: 50%;
   margin-top: -180rpx;
   display: flex;

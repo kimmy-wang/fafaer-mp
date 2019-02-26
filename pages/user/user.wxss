@@ -36,7 +36,7 @@
   border-bottom: none;
 }
 
-.content-container {
+.content-container, .num-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -56,11 +56,23 @@
 }
 
 .num-container > text {
-  color: #555;
-  padding: 10rpx 30rpx;
+  color: #999;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-right: 10rpx;
 }
 
 .num-container > image {
   width: 40rpx;
   height: 40rpx;
+}
+
+.feedback-btn {
+  padding: 20rpx;
+}
+
+.feedback {
+  width: 40rpx;
+  height: 40rpx;
+  color: #ff4e20;
 }

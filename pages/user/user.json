@@ -3,7 +3,8 @@
   "usingComponents": {
     "v-user": "/components/user/index",
     "v-mask": "/components/mask/index",
-    "v-confirm": "/components/confirm/index"
+    "v-confirm": "/components/confirm/index",
+    "v-button": "/components/image-button/index"
   },
   "enablePullDownRefresh": false
 }

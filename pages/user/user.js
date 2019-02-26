@@ -18,6 +18,7 @@ import {
   USER_PUBLIC_WELFARE,
   USER_MINI_PROGRAM_COVER,
   USER_CLEAR_STORAGE,
+  USER_FEED_BACK,
   USER_ABOUT,
   USER_SHOW_CONFIRM_ONCE,
 
@@ -84,8 +85,14 @@ Page({
       title
     } = e.detail
     if (type === USER_ADMIRATION) {
-      wx.previewImage({
-        urls: ['https://dev.cdn.chenyifaer.com/admiration.png']
+      wx.showModal({
+        title: '赞赏',
+        content: '确定去赞赏页面吗?',
+        success(res) {
+          res.confirm && wx.previewImage({
+            urls: ['https://dev.cdn.chenyifaer.com/admiration.png']
+          })
+        }
       })
       return
     }
@@ -105,21 +112,31 @@ Page({
     }
 
     if (type === USER_CLEAR_STORAGE) {
-      wx.clearStorage({
-        success() {
-          wx.showToast({
-            title: '清除成功',
-            mask: true
-          })
-        },
-        fail() {
-          wx.showToast({
-            title: '清除失败',
-            icon: 'none',
-            mask: true
+      wx.showModal({
+        title: '清除缓存',
+        content: '确定清除缓存吗?',
+        success(res) {
+          res.confirm && wx.clearStorage({
+            success() {
+              wx.showToast({
+                title: '清除成功',
+                mask: true
+              })
+            },
+            fail() {
+              wx.showToast({
+                title: '清除失败',
+                icon: 'none',
+                mask: true
+              })
+            }
           })
         }
       })
+      return
+    }
+
+    if (type === USER_FEED_BACK) {
       return
     }
 

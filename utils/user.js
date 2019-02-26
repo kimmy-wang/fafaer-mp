@@ -7,6 +7,7 @@ import {
   USER_PUBLIC_WELFARE,
   USER_MINI_PROGRAM_COVER,
   USER_CLEAR_STORAGE,
+  USER_FEED_BACK,
   USER_ABOUT
 } from '../utils/constants.js'
 
@@ -64,13 +65,19 @@ const settings = [
         type: USER_MINI_PROGRAM_COVER
       },
       {
-        id: 218,
-        title: "清除缓存",
+        id: 220,
+        title: "缓存",
         icon: "/images/user/clear@fill.png",
         type: USER_CLEAR_STORAGE
       },
       {
-        id: 220,
+        id: 225,
+        title: "反馈",
+        icon: "/images/user/feedback@fill.png",
+        type: USER_FEED_BACK
+      },
+      {
+        id: 230,
         title: "关于",
         icon: "/images/user/about@fill.png",
         type: USER_ABOUT

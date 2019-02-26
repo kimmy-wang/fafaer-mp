@@ -11,10 +11,13 @@
           </view>
           <view slot="num" class="num-container">
             <text wx:if="{{item.type === 'USER_ARTICLE'}}">{{articleNum}}</text>
-            <text wx:elif="{{item.type === 'USER_MUSIC'}}">{{musicNum}}</text>
-            <text wx:elif="{{item.type === 'USER_VIDEO'}}">{{videoNum}}</text>
-            <text wx:elif="{{item.type === 'USER_PHOTO'}}">{{photoNum}}</text>
-            <image wx:else src="/images/user/right.png" />
+            <text wx:if="{{item.type === 'USER_MUSIC'}}">{{musicNum}}</text>
+            <text wx:if="{{item.type === 'USER_VIDEO'}}">{{videoNum}}</text>
+            <text wx:if="{{item.type === 'USER_PHOTO'}}">{{photoNum}}</text>
+            <v-button wx:if="{{item.type === 'USER_FEED_BACK'}}" class="feedback-btn" open-type="feedback">
+              <text class="feedback" slot="img">·</text>
+            </v-button>
+            <image src="/images/user/right.png" />
           </view>
         </v-user>
       </block>
