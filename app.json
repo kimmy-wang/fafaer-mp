@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/welcome/welcome",
-    "pages/new/new",
+    "pages/news/news",
     "pages/new-detail/new-detail",
     "pages/music/music",
     "pages/music-detail/music-detail",
@@ -31,10 +31,10 @@
     "backgroundColor": "#FFFFFF",
     "list": [
       {
-        "pagePath": "pages/new/new",
+        "pagePath": "pages/news/news",
         "text": "新闻",
-        "iconPath": "/images/tab/new.png",
-        "selectedIconPath": "/images/tab/new@selected.png"
+        "iconPath": "/images/tab/news.png",
+        "selectedIconPath": "/images/tab/news@selected.png"
       },
       {
         "pagePath": "pages/music/music",

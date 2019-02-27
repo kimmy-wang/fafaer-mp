@@ -62,14 +62,14 @@ Page({
     } = this.data
     if ((index + 1) === banners.length) {
       wx.switchTab({
-        url: '/pages/new/new',
+        url: '/pages/news/news',
       })
     }
   },
 
   skipTap() {
     wx.switchTab({
-      url: '/pages/new/new',
+      url: '/pages/news/news',
     })
   },
 
