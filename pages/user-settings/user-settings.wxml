@@ -1,0 +1,28 @@
+<!--pages/user-settings/user-settings.wxml-->
+<view class="container">
+    <block wx:for="{{menus}}" wx:key="{{parent.id}}" wx:for-item="parent">
+        <text class="title">{{parent.title}}</text>
+        <view class="sub-container">
+            <block wx:for="{{parent.list}}" wx:key="{{item.id}}">
+                <v-user bindclick="onItemClick" item="{{item}}" class="more">
+                    <view slot="content" class="content-container">
+                        <image src="{{item.icon}}" />
+                        <text>{{item.title}}</text>
+                    </view>
+                    <view slot="num" class="num-container">
+                        <v-button wx:if="{{item.type === 'USER_FEED_BACK'}}" bindclick="onFeedBackButtonClick" class="feedback-btn" open-type="feedback">
+                            <text class="feedback" slot="img">·</text>
+                        </v-button>
+                        <image src="/images/user/right.png" />
+                    </view>
+                </v-user>
+            </block>
+        </view>
+    </block>
+    <text wx:if="{{showOfficialAccount}}" class="title">公众号</text>
+    <view wx:if="{{showOfficialAccount}}" class="sub-sontainer">
+        <view class="account">
+            <official-account binderror="hideOfficialAccount"></official-account>
+        </view>
+    </view>
+</view>

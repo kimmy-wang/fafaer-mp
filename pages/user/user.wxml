@@ -1,8 +1,8 @@
 <!--pages/user/user.wxml-->
 <view class="container">
-  <block wx:for="{{settings}}" wx:key="{{parent.id}}" wx:for-item="parent">
+  <block wx:for="{{menus}}" wx:key="{{parent.id}}" wx:for-item="parent">
     <text class="title">{{parent.title}}</text>
-    <view class="sub-sontainer">
+    <view class="sub-container">
       <block wx:for="{{parent.list}}" wx:key="{{item.id}}">
         <v-user bindclick="onItemClick" item="{{item}}" class="more">
           <view slot="content" class="content-container">

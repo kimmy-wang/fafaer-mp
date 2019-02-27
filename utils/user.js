@@ -8,10 +8,11 @@ import {
   USER_MINI_PROGRAM_COVER,
   USER_CLEAR_STORAGE,
   USER_FEED_BACK,
-  USER_ABOUT
+  USER_ABOUT,
+  USER_SETTINGS
 } from '../utils/constants.js'
 
-const settings = [
+const user_menus = [
   {
     id: 100,
     title: '分页设置',
@@ -44,40 +45,67 @@ const settings = [
   },
   {
     id: 200,
-    title: '其它设置',
+    title: '',
     list: [
       {
         id: 205,
+        title: "设置",
+        icon: "/images/user/settings@fill.png",
+        type: USER_SETTINGS
+      }
+    ]
+  }
+]
+
+const user_settings_menus = [
+  {
+    id: 100,
+    title: '',
+    list: [
+      {
+        id: 105,
         title: "赞赏",
         icon: "/images/user/pay@fill.png",
         type: USER_ADMIRATION
       },
       {
-        id: 210,
+        id: 110,
         title: "公益",
         icon: "/images/user/gongyi.png",
         type: USER_PUBLIC_WELFARE
-      },
+      }
+    ]
+  },
+  {
+    id: 200,
+    title: '',
+    list: [
       {
-        id: 215,
+        id: 205,
         title: "封面",
         icon: "/images/user/cover@fill.png",
         type: USER_MINI_PROGRAM_COVER
       },
       {
-        id: 220,
+        id: 210,
         title: "缓存",
         icon: "/images/user/clear@fill.png",
         type: USER_CLEAR_STORAGE
-      },
+      }
+    ]
+  },
+  {
+    id: 300,
+    title: '',
+    list: [
       {
-        id: 225,
+        id: 305,
         title: "反馈",
         icon: "/images/user/feedback@fill.png",
         type: USER_FEED_BACK
       },
       {
-        id: 230,
+        id: 310,
         title: "关于",
         icon: "/images/user/about@fill.png",
         type: USER_ABOUT
@@ -86,4 +114,7 @@ const settings = [
   }
 ]
 
-export default settings
+export {
+  user_menus,
+  user_settings_menus
+}

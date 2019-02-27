@@ -1,4 +1,4 @@
-/* pages/more/more.wxss */
+/* pages/user-settings/user-settings.wxss */
 
 .container {
   display: flex;
@@ -65,5 +65,15 @@
 .num-container > image {
   width: 40rpx;
   height: 40rpx;
+}
+
+.feedback-btn {
+  padding: 20rpx;
+}
+
+.feedback {
+  width: 40rpx;
+  height: 40rpx;
+  color: #ff4e20;
 }
 

@@ -1,7 +1,7 @@
 // pages/user/user.js
-import settings from '../../utils/user.js'
-
-import versions from '../../versions.js'
+import {
+  user_menus
+} from '../../utils/user.js'
 
 import {
   getCacheNum,
@@ -16,12 +16,7 @@ import {
   USER_MUSIC,
   USER_VIDEO,
   USER_PHOTO,
-  USER_ADMIRATION,
-  USER_PUBLIC_WELFARE,
-  USER_MINI_PROGRAM_COVER,
-  USER_CLEAR_STORAGE,
-  USER_FEED_BACK,
-  USER_ABOUT,
+  USER_SETTINGS,
   USER_SHOW_CONFIRM_ONCE,
 
   PAGE_SIZE
@@ -33,7 +28,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    settings: settings,
+    menus: user_menus,
     type: '',
     title: '',
     min: PAGE_SIZE,
@@ -74,85 +69,15 @@ Page({
     // })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
-
   onItemClick(e) {
     const {
       type,
       title
-    } = e.detail
-    if (type === USER_ADMIRATION) {
-      wx.showModal({
-        title: '赞赏',
-        content: '确定去赞赏页面吗?',
-        success(res) {
-          res.confirm && wx.previewImage({
-            urls: ['https://dev.cdn.chenyifaer.com/admiration.png']
-          })
-        }
-      })
-      return
-    }
+    } = e.detail;
 
-    if (type === USER_PUBLIC_WELFARE) {
+    if (type === USER_SETTINGS) {
       wx.navigateTo({
-        url: '/pages/user-public-welfare/user-public-welfare',
-      })
-      return
-    }
-
-    if (type === USER_MINI_PROGRAM_COVER) {
-      wx.navigateTo({
-        url: '/pages/user-cover/user-cover',
-      })
-      return
-    }
-
-    if (type === USER_CLEAR_STORAGE) {
-      wx.showModal({
-        title: '清除缓存',
-        content: '确定清除缓存吗?',
-        success(res) {
-          res.confirm && wx.clearStorage({
-            success() {
-              wx.showToast({
-                title: '清除成功',
-                mask: true
-              })
-            },
-            fail() {
-              wx.showToast({
-                title: '清除失败',
-                icon: 'none',
-                mask: true
-              })
-            }
-          })
-        }
-      })
-      return
-    }
-
-    if (type === USER_FEED_BACK) {
-      return
-    }
-
-    if (type === USER_ABOUT) {
-      wx.showModal({
-        title: '版本',
-        content: versions[0].version,
-        cancelText: '更新记录',
-        confirmText: '朕已阅',
-        success(res) {
-          !res.confirm && wx.navigateTo({
-            url: '/pages/user-about/user-about'
-          })
-        }
+        url: '/pages/user-settings/user-settings',
       })
       return
     }
