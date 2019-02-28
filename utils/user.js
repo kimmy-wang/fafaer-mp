@@ -5,8 +5,10 @@ import {
   USER_PHOTO,
   USER_ADMIRATION,
   USER_PUBLIC_WELFARE,
+  USER_SHOW_AD,
   USER_MINI_PROGRAM_COVER,
   USER_CLEAR_STORAGE,
+  USER_COVER_CACHE_VALID_HOURS,
   USER_FEED_BACK,
   USER_ABOUT,
   USER_SETTINGS
@@ -73,6 +75,12 @@ const user_settings_menus = [
         title: "公益",
         icon: "/images/user/gongyi.png",
         type: USER_PUBLIC_WELFARE
+      },
+      {
+        id: 115,
+        title: "显示广告",
+        icon: "/images/user/ad@fill.png",
+        type: USER_SHOW_AD
       }
     ]
   },
@@ -91,6 +99,12 @@ const user_settings_menus = [
         title: "缓存",
         icon: "/images/user/clear@fill.png",
         type: USER_CLEAR_STORAGE
+      },
+      {
+        id: 215,
+        title: "缓存有效时间",
+        icon: "/images/user/time@fill.png",
+        type: USER_COVER_CACHE_VALID_HOURS
       }
     ]
   },

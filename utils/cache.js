@@ -1,6 +1,8 @@
 import {
   PAGE_SIZE,
-  VALID_SECONDS
+  COVER_CACHE_VALID_HOURS,
+  CACHE_USER_COVER_VALID_HOURS,
+  CACHE_USER_SHOW_AD
 } from '../utils/constants.js'
 
 import {
@@ -15,6 +17,22 @@ const setCacheNum = (type, value) => {
   _setValueToCache(type, value)
 }
 
+const getCacheValidHours = () => {
+  return _getValueFromCache(CACHE_USER_COVER_VALID_HOURS) || COVER_CACHE_VALID_HOURS
+}
+
+const setCacheValidHours = (value) => {
+  _setValueToCache(CACHE_USER_COVER_VALID_HOURS, value)
+}
+
+const getCacheShowAd = () => {
+  return _getValueFromCache(CACHE_USER_SHOW_AD) || 'Y'
+}
+
+const setCacheShowAd = (value) => {
+  _setValueToCache(CACHE_USER_SHOW_AD, value)
+}
+
 const getShowConfirmOnce = type => {
   return _getValueFromCache(type) || false
 }
@@ -23,9 +41,10 @@ const setShowConfirmOnce = type => {
   _setValueToCache(type, true)
 }
 
-const getValidDataFromCache = (type, seconds = VALID_SECONDS) => {
+const getValidDataFromCache = (type) => {
+  const hours = parseInt(getCacheValidHours())
   let data = _getValueFromCache(type)
-  if (!data || (getCurrentTime() - seconds * 1000) > parseInt(data.timestamp)) {
+  if (!data || (getCurrentTime() - hours * 60 * 60 * 1000) > parseInt(data.timestamp)) {
     return null
   }
   return data.data
@@ -50,9 +69,15 @@ export {
   getCacheNum,
   setCacheNum,
 
+  getCacheValidHours,
+  setCacheValidHours,
+
+  getCacheShowAd,
+  setCacheShowAd,
+
   getShowConfirmOnce,
   setShowConfirmOnce,
 
   getValidDataFromCache,
   setValidDataFromCache
-} 
+}
