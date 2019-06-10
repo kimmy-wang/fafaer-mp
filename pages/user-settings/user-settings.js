@@ -44,7 +44,6 @@ Page({
     const index = pickerArray.indexOf(cacheHour)
 
     const cacheShowAd = getCacheShowAd()
-    console.log(cacheShowAd)
     this.setData({
       pickerIndex: index,
       showAd: cacheShowAd === 'Y'
